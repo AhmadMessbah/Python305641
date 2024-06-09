@@ -20,6 +20,7 @@ class Job(Base):
         self.end_date = end_date
         self.status = status
         self.deleted = deleted
+        self.person = None
 
     # getter / setter
 
