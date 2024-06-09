@@ -1,11 +1,11 @@
-from sqlalchemy import Column, Intiger, String, Boolean
-
+from sqlalchemy import Column, Integer, String, Boolean,ForeignKey
+from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
 
 
 class Letter(Base):
     __tablename__ = "letter_tbl"
-    _id = Column('id', Intiger, primary_key=True, autoincrement=True)
+    _id = Column('id', Integer, primary_key=True, autoincrement=True)
     _sender = Column("sender", String(20), nullable=False)
     _reciver = Column("receiver", String(20), nullable=False)
     _group = Column("group", String(20), nullable=False)
@@ -13,6 +13,9 @@ class Letter(Base):
     _priarty = Column("priority", String(20), nullable=False)
     _status = Column("status", Boolean, defult=True)
     _deleted = Column("deleted", Boolean, default=False)
+
+    person_id= Column(Integer, ForeignKey("person_tbl.id"))
+    person= relationship("Person")
 
     def __init__(self, sender, receiver, group, title, priority, status, deleted=False):
         self.id = None
@@ -36,12 +39,12 @@ class Letter(Base):
 
     # reciver
     @property
-    def reciver(self):
-        return self._reciver
+    def receiver(self):
+        return self.receiver
 
-    @reciver.setter
-    def reciver(self, reciver):
-        self._reciver = reciver
+    @receiver.setter
+    def receiver(self, receiver):
+        self.receiver = receiver
 
     # group
     @property
@@ -54,21 +57,21 @@ class Letter(Base):
 
     # titel
     @property
-    def titel(self):
-        return self._titel
+    def title(self):
+        return self.title
 
-    @titel.setter
-    def titel(self, titel):
-        self._titel = titel
+    @title.setter
+    def titel(self, title):
+        self.title = title
 
     # priarty
     @property
-    def priarty(self):
-        return self._priarty
+    def priority(self):
+        return self.priority
 
-    @priarty.setter
-    def priarty(self, priarty):
-        self._priarty = priarty
+    @priority.setter
+    def priority(self, priority):
+        self.priority = priority
 
     # status
     @property
