@@ -11,12 +11,12 @@ class FinancialDocument(Base):
     _deleted = Column("deleted", Boolean, default=False)
 
 
-    def __init__(self, id, amount, date_time, doc_type):
-        self.id = id
-        self.amount = amount
-        self.date_time = date_time
+    def __init__(self, id, amount, date_time, doc_type,deleted=False):
+        self._id = id
+        self._amount = amount
+        self._date_time = date_time
         self._doc_type = doc_type
-        self.deleted = deleted
+        self._deleted = deleted
 
  def get_id(self):
         return self._id

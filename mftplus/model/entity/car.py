@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
 
@@ -11,7 +12,11 @@ class Car(Base):
     _man_date = Column("man date", Boolean, default = True)
     _deleted = Column("deleted", Boolean, default = False)
 
-    def __init__(self, name, model, man_date, deleted = False):
+    owner_id = Column(Integer, ForeignKey("person_tbl.id"))
+    owner = relationship("Person")
+
+
+    def __init__(self, id, name, model, man_date, deleted = False):
         self._id = None
         self._name = name
         self._model = model
@@ -30,7 +35,7 @@ class Car(Base):
         return self._name
 
     def set_name(self, name):
-        if name_validator(name):
+        if car_name_validator(name):
             self._name = name
         else:
             raise ValueError("Invalid Name")
@@ -40,7 +45,7 @@ class Car(Base):
         return self._model
 
     def set_model(self, model):
-        if model_validator(name_validator):
+        if car_model_validator(model):
             self._model = model
         else:
             raise ValueError("Invalid Model")
