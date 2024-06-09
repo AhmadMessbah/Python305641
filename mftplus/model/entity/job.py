@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Boolean
-
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from mftplus.model.entity.base import Base
+from sqlalchemy.orm import relationship
+from mftplus.model.tools.validator import *
 
 
 class Job(Base):
@@ -11,6 +12,9 @@ class Job(Base):
     _start_date = Column("start_date", Boolean, default=True)
     _end_date = Column("end_date", Boolean, default=True)
     _deleted = Column("deleted", Boolean, default=False)
+
+    person_id = Column(Integer, ForeignKey("person_tbl.id") )
+    person = relationship("Person")
 
     def __init__(self,title,organisation,start_date,end_date, status=True,deleted = False):
         self.id = None
@@ -32,12 +36,14 @@ class Job(Base):
     def get_title(self):
         return self._title
     def set_title(self,title):
-        self._title = title
+        if isinstance(title,str) and title_validator(title):
+            self._title = title
 
     def get_organisation(self):
         return self._organisation
     def set_organisation(self,organisation):
-        self._organisation = organisation
+        if isinstance(organisation, str) and title_validator(organisation):
+            self._organisation = organisation
 
     def get_start_date(self):
         return self._start_date
@@ -52,7 +58,8 @@ class Job(Base):
     def get_status(self):
         return self.status
     def set_status(self,status):
-        self.status = status
+        if isinstance(status,bool):
+            self.status = status
     def get_deleted(self):
         return self._deleted
     def set_deleted(self,deleted):
