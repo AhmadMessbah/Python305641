@@ -8,7 +8,7 @@ person_da.save(person)
 print(person)
 
 
-job = Job("programming","google","2010/10/10","2020/10/20","termination of cooperation")
+job = Job("programming","google","2010/10/10","2020/10/20",True)
 job.person = person
 job_da = DataAccess(job)
 job_da.save(job)
