@@ -3,8 +3,8 @@ from sqlalchemy.orm import relationship
 
 from mftplus.model.entity.base import Base
 
-class Employee(Base):
-    __tablename__ = "employee_tbl"
+class Employeement(Base):
+    __tablename__ = "employeement_tbl"
     _id = Column("id",Integer, primery_key=True,autoincrement=True)
     _name = Column("name",String(20),nullable=False)
     _family = Column("family",String(20),nullable=False)
@@ -12,12 +12,13 @@ class Employee(Base):
     _pay_ment = Column("pay_ment",String(20),nullable=False)
 
 
-    def __init__(self,id,name,family,insurance,pay_ment):
+    def __init__(self,name,family,insurance,pay_ment):
         self._id = None
         self._name = name
         self._family = family
         self._insurance = insurance
         self._pay_ment = pay_ment
+
 
 
     def get_id(self):
@@ -52,10 +53,7 @@ class Employee(Base):
             raise ValueError("invalid input paymentation")
 
 
-    def get_id(self):
-        return self._id
-    def set_id(self,id):
-        self._id = id
+
 
 
 
@@ -65,3 +63,5 @@ class Employee(Base):
     insurance = property(get_insurance,set_insurance)
     pay_ment = property(get_pay_ment,set_pay_ment)
 
+
+pey_ment1 = Employee("Pey","<EMAIL>","ali",True,"a")
