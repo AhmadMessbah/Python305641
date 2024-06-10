@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean
 from mftplus.model.entity.base import Base
 
-
 class Car(Base):
     __tablename__ = "car_table"
     _id = Column("id", Integer, primary_key = True, autoincrement = True)
