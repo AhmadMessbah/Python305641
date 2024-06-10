@@ -8,13 +8,14 @@ class Car(Base):
     _name = Column("name", String(20), nullable = False)
     _model = Column("model", String(20), nullable = False)
     _man_date = Column("man date", Boolean, default = True)
-    deleted = False
+    _deleted = Column("deleted", Boolean, default = False)
 
-    def __init__(self, name, model, man_date, deleted = False):
+    def __init__(self, name, model, man_date, deleted):
         self._id = None
         self._name = name
         self._model = model
         self._man_date = man_date
+        self._deleted = deleted
 
 
     # getter / setter
