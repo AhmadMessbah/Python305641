@@ -10,7 +10,7 @@ class Car(Base):
     _man_date = Column("man date", Boolean, default = True)
     _deleted = Column("deleted", Boolean, default = False)
 
-    def __init__(self, name, model, man_date, deleted):
+    def __init__(self, name, model, man_date, deleted = False):
         self._id = None
         self._name = name
         self._model = model
