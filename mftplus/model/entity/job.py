@@ -12,7 +12,7 @@ class Person(Base):
     _end_date = Column("end_date", Boolean, default=True)
     _deleted = Column("deleted", Boolean, default=False)
 
-    def __init__(self,title,organisation,start_date,end_date,deleted = False, status=True):
+    def __init__(self,title,organisation,start_date,end_date, status=True,deleted = False):
         self.id = None
         self.title = title
         self.organisation = organisation
