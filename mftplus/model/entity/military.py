@@ -11,9 +11,9 @@ class Military(Base):
     _location = Column("location", Integer(20))
     _organization = Column("organization", Integer(30))
     _status = Column("status", Integer(20))
-    _deleted = Column("deleted",Boolean, default=False)
+    _deleted = Column("deleted", Boolean, default=False)
 
-    def __init__(self,id ,serial , date , location , organization , status , deleted):
+    def __init__(self, id , serial , date , location , organization , status , deleted):
         self._id = None
         self._serial = serial
         self._date = date
