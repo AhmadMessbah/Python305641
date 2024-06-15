@@ -23,3 +23,61 @@ class DrivingLicence(Base):
         self._deleted = deleted
 
     # getter/setter
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        self._id= id
+
+    @property
+    def serial(self):
+        return self._serial
+
+    @serial.setter
+    def serial(self, serial):
+        self._serial = serial
+
+    @property
+    def licence_type(self):
+        return self._license_type
+
+    @_licence_type.setter
+    def licence_type(self, licence_type):
+        self._license_type = licence_type
+
+
+    @property
+    def start_date(self):
+        return self._start_date
+
+    @start_date.setter
+    def start_date(self, start_date):
+        self._start_date = start_date
+
+    @property
+    def expire_date(self):
+        return self._expire_data_time
+
+    @expire_date.setter
+    def expire_date(self, expire_date):
+        self._expire_data_time = expire_date
+
+
+    @property
+    def status(self):
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        self._status = status
+
+    @property
+    def deleted(self):
+        return self._deleted
+
+    @deleted.setter
+    def deleted(self, deleted):
+        self._deleted = deleted
