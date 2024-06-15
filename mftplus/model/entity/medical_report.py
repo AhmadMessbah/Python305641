@@ -4,7 +4,7 @@ from mftplus.model.entity.base import Base
 
 
 class MedicalReport(Base):
-    __tablename__ = "medicalreport_tbl"
+    __tablename__ = "medical_report_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _disease = Column("disease", String(20), nullable=False)
     _group = Column("group", String(20), nullable=False)
