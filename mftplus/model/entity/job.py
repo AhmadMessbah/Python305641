@@ -60,7 +60,17 @@ class Job(Base):
     def set_status(self,status):
         if isinstance(status,bool):
             self.status = status
+        else:
+            raise ValueError("Status must be boolean")
     def get_deleted(self):
         return self._deleted
     def set_deleted(self,deleted):
         self._deleted = deleted
+
+    id = property(get_id,set_id)
+    title = property(get_title,set_title)
+    organisation = property(get_organisation,set_organisation)
+    start_date = property(get_start_date,set_start_date)
+    end_date = property(get_end_date,set_end_date)
+    status = property(get_status,set_status)
+    deleted = property(get_deleted,set_deleted)
