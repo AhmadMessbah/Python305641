@@ -2,8 +2,8 @@
 from sqlalchemy import Column, Intiger, String, Boolean
 
 from mftplus.model.entity.base import Base
-class Financial_Document(Base):
-    __tablename__ = 'Financial_Document'
+class FinancialDocument(Base):
+    __tablename__ = 'financial_document_tbl'
     _id = Column("id", Intiger, primary_key=True, autoincrement=True)
     _amount = Column("amount", Intiger , default=0)
     _date_time = Column("datetime", String(20) , nullable=False, default=0)
@@ -11,7 +11,7 @@ class Financial_Document(Base):
     _deleted = Column("deleted", Boolean, default=False)
 
 
-    def __init__(self, _id, _amount, _date_time, _data_type):
+    def __init__(self, id, amount, date_time, doc_type):
         self.id = id
         self.amount = amount
         self.date_time = date_time
