@@ -20,3 +20,5 @@ class BankAccount(Base):
         self._card_number = card_number
         self._account_type = accunt_type
         self._status = status
+    def __repr__(self):
+        return f"{self.__dict__}"
