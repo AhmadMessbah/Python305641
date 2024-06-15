@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime
+from sqlalchemy import Column, Integer, String, Boolean, DateTime , ForeignKey 
+from sqlalchemy.orm import relationship
 
 from mftplus.model.entity.base import Base
 from datetime import datetime
@@ -12,8 +13,13 @@ class Ticket(Base):
     _sender = Column("sender", String(20), nullable=False)
     _date_time = Column("date_time", DateTime, nullable=False)
     _status = Column("status", Boolean, default=True)
+    _deleted = Column("deleted", Boolean, default=False)
 
-    def __init__(self, group, title, text, sender, date_time, status=True):
+
+    owner_id = Column(Integer, ForeignKey("person_tbl.id") )
+    owner = relationship("Person")
+    
+    def __init__(self, group, title, text, sender, date_time, status=True,deleted=False):
         self.id = None
         self.group = group
         self.title = title
@@ -21,6 +27,8 @@ class Ticket(Base):
         self.sender = sender
         self.date_time = date_time
         self.status = status
+        self.deleted = status
+        self.owner_id = None
 
     @property
     def group(self):
@@ -28,7 +36,6 @@ class Ticket(Base):
     
     @group.setter
     def group(self,group):
-
         self._group = group
 
     @property
@@ -68,3 +75,14 @@ class Ticket(Base):
             self._status = status
         else:
             raise ValueError("Invalid Status")
+
+    @property
+    def deleted(self):
+        return self._deleted
+
+    @deleted.setter
+    def deleted(self,deleted):
+        if isinstance(deleted, bool):
+            self._deleted = deleted
+        else:
+            raise ValueError("Invalid deleted")
