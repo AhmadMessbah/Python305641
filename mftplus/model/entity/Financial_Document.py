@@ -48,4 +48,3 @@ class FinancialDocument(Base):
 
 
 
-
