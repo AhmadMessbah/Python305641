@@ -1,6 +1,4 @@
 import re
-
-
 # def car_name_validator(name):
 #     ...
 
@@ -8,49 +6,31 @@ import re
 def military_serial_validator(serial):
     pass
 
-
 def bank_validator(bank):
-    return re.match("^[A-Za-z]{10}$", bank)
+    return re.match(r"^[A-Za-z]{10}$", bank)
 
-
-from datetime import datetime, date
-
-
-#@classmethod
-def military_serial_validator(serial):
-    if isinstance(serial, int):
-        return serial
+def title_validator(title):
+    if isinstance(title, str) and re.match(r"^[A-Za-z]{10}$", title):
+        return title
     else:
-        raise ValueError("Invalid serial number")
+        raise ValueError("Invalid title")
 
 
-#@classmethod
-def military_date_validator(date):
-    if isinstance(date, int):
-        return date
-    else:
-        raise ValueError("Invalid date")
+
+def sender_validator(sender):
+    return re.match(r"^[A-Za-z]{20}$", sender)
 
 
-#@classmethod
-def military_location_validator(location):
-    if isinstance(location, str) and re.match(r"^[0-9]+$", location):
-        return location
-    else:
-        raise ValueError("Invalid location")
+def receiver_validator(receiver):
+    return re.match(r"^[A-Za-z]{20}$", receiver)
 
 
-#@classmethod
-def military_organization_validator(organization):
-    if isinstance(organization, str) and re.match(r"^[0-9]+$", organization):
-        return organization
-    else:
-        raise ValueError("Invalid organization")
+def group_validator(group):
+    return re.match(r"^[A-Za-z]{20}$", group)
 
 
-#@classmethod
-def military_status_validator(self, status):
-    if isinstance(status, bool):
-        self._status = status
-    else:
-        raise ValueError("Invalid status")
+def title_validator(title):
+    return re.match(r"^[A-Za-z]{20}$", title)
+
+def priority_validator(priority):
+    return re.match(r"^[A-Za-z]{20}$", priority)
