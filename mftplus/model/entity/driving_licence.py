@@ -8,8 +8,8 @@ class DrivingLicense(Base):
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _serial = Column("serial", Integer, unique=True)
     _license_type = Column("license_type", String(30))
-    _start_date_time = Column("start_data_time", DateTime)
-    _expire_date_time = Column("expire_data_time", DateTime)
+    _start_date_time = Column("start_date_time", DateTime)
+    _expire_date_time = Column("expire_date_time", DateTime)
     _status = Column("status", Integer)
     _deleted = Column("deleted", Boolean, default=False)
 
@@ -50,20 +50,20 @@ class DrivingLicense(Base):
         self._license_type = license_type
 
     @property
-    def start_date(self):
-        return self._start_date
+    def start_date_time(self):
+        return self._start_date_time
 
-    @start_date.setter
-    def start_date(self, start_date):
-        self._start_date = start_date
+    @start_date_time.setter
+    def start_date_time(self, start_date_time):
+        self._start_date_time = start_date_time
 
     @property
-    def expire_date(self):
-        return self._expire_data_time
+    def expire_date_time(self):
+        return self._expire_date_time
 
-    @expire_date.setter
-    def expire_date(self, expire_date):
-        self._expire_data_time = expire_date
+    @expire_date_time.setter
+    def expire_date_time(self, expire_date_time):
+        self._expire_date_time = expire_date_time
 
     @property
     def status(self):
