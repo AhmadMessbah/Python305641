@@ -18,4 +18,27 @@ class MedicalReport(Base):
         self.datetime = datetime
         self.deleted = deleted
 
-    # getter / setter
+    def get_disease(self):
+        return self._disease
+    def set_disease(self,disease):
+        self._disease = disease
+
+
+
+    def get_group(self):
+        return self._group
+    def set_group(self, group):
+        self._group = group
+
+
+
+    def get_datetime(self):
+        return self._datetime
+    def set_datetime(self,datetime):
+        self._datetime = datetime
+
+
+    def get_deleted(self):
+        return self._deleted
+    def set_deleted(self,deleted):
+        self._deleted = deleted
