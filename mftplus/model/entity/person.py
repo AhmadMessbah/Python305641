@@ -12,9 +12,9 @@ class Person(Base):
     status = Column("status", Boolean, default=True)
 
     def __init__(self, name, family, status=True):
-        self._id = None
-        self._name = name
-        self._family = family
-        self._status = status
+        self.id = None
+        self.name = name
+        self.family = family
+        self.status = status
 
     # getter / setter
