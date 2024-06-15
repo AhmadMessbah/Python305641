@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String, Boolean
-
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
+from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
 
 
@@ -22,6 +22,9 @@ class DrivingLicence(Base):
         self._status = status
         self._deleted = deleted
 
+    owner_id = Column(Integer, ForeignKey("person_tbl.id"))
+    owner = relationship("Person")
+
     # getter/setter
 
     @property
@@ -30,7 +33,7 @@ class DrivingLicence(Base):
 
     @id.setter
     def id(self, id):
-        self._id= id
+        self._id = id
 
     @property
     def serial(self):
@@ -44,10 +47,9 @@ class DrivingLicence(Base):
     def licence_type(self):
         return self._license_type
 
-    @_licence_type.setter
+    @licence_type.setter
     def licence_type(self, licence_type):
         self._license_type = licence_type
-
 
     @property
     def start_date(self):
@@ -64,7 +66,6 @@ class DrivingLicence(Base):
     @expire_date.setter
     def expire_date(self, expire_date):
         self._expire_data_time = expire_date
-
 
     @property
     def status(self):
