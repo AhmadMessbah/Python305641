@@ -16,7 +16,7 @@ class Car(Base):
     owner = relationship("Person")
 
 
-    def __init__(self, id, name, model, man_date, deleted = False):
+    def __init__(self,  name, model, man_date, deleted = False):
         self._id = None
         self._name = name
         self._model = model
