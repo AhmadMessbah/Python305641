@@ -59,5 +59,11 @@ class Skill(Base):
         self._deleted = _deleted
 
 
+    id= property(get_id, set_id)
+    group= property(get_title, set_title)
+    title= property(get_title, set_title)
+    description= property(get_description, set_description)
+    license= property(get_license, set_license)
+    deleted= property(get_deleted, set_deleted)
 
 
