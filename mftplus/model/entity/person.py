@@ -7,9 +7,9 @@ from mftplus.model.entity.base import Base
 class Person(Base):
     __tablename__ = "person_tbl"
     id = Column("id", Integer, primary_key=True, autoincrement=True)
-    name = Column("name", String(20), nullable=False)
-    family = Column("family", String(20), nullable=False)
-    status = Column("status", Boolean, default=True)
+    name = Column("name", String(20))
+    family = Column("family", String(20))
+    status = Column("status", Boolean)
 
     def __init__(self, name, family, status=True):
         self.id = None
