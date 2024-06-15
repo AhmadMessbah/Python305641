@@ -29,7 +29,7 @@ class Skill(Base):
         return self.title
 
     def set_title(self, title):
-        self.title = title
+        self._title = title
 
     def get_description(self):
         return self.description
@@ -41,13 +41,13 @@ class Skill(Base):
         return self.license
 
     def set_license(self, license):
-        self.license = license
+        self._license = license
 
     def get_deleted(self):
         return self.deleted
 
     def set_deleted(self, deleted):
-        self.deleted = deleted
+        self._deleted = deleted
 
     id = property(get_id, set_id)
     group = property(get_title, set_title)
