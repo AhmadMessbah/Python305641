@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, Boolean
 from mftplus.model.entity.base import Base
 
 
-class Person(Base):
+class Job(Base):
     __tablename__ = "person_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _title = Column("title", String(20), nullable=False)
@@ -18,5 +18,7 @@ class Person(Base):
         self.organisation = organisation
         self.start_date = start_date
         self.end_date = end_date
+        self.status = status
+        self.deleted = deleted
 
     # getter / setter
