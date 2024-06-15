@@ -34,7 +34,7 @@ class BankAccount(Base):
         return self._bank
 
     def set_bank(self,bank):
-        self._bank = bank_validator(bank,"Invalid Bank")
+        self._bank = bank_validator(bank)
 
     def get_branch(self):
         return self._branch
