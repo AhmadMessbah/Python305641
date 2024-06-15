@@ -3,8 +3,8 @@ from mftplus.model.entity.bank_account import BankAccount
 from mftplus.model.entity.person import Person
 
 bank_account = BankAccount("parsian","aaaa",1234,123456,"bbb",True)
-bank_account.da = DataAccess(bank_account)
-bank_account.save(bank_account)
+bank_account_da = DataAccess(bank_account)
+bank_account_da.save(bank_account)
 
 person = Person("arshida","gashtasbi")
 person.bank_account = bank_account

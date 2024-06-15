@@ -4,7 +4,7 @@ from sqlalchemy_utils import create_database, database_exists
 from mftplus.model.entity.base import Base
 
 
-connection_string = "mysql+pymysql://root:root123@localhost:3306/mft"
+connection_string = "mysql+pymysql://root:mft123@localhost:3306/mft"
 if not database_exists(connection_string):
     create_database(connection_string)
 

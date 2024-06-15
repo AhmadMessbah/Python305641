@@ -8,8 +8,8 @@ class BankAccount(Base):
     _id = Column("id",Integer, primary_key=True, autoincrement=True)
     _bank = Column("bank",String(30), nullable=False)
     _branch = Column("branch",String(30), nullable=False)
-    _account_number = Column("account_number",Integer(10), nullable=False)
-    _card_number = Column("card_number",Integer(16), nullable=False)
+    _account_number = Column("account_number",Integer, nullable=False)
+    _card_number = Column("card_number",Integer, nullable=False)
     _account_type = Column("account_type",String(20), nullable=False)
     _status = Column("status",Boolean, default=True)
 
