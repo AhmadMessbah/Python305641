@@ -1,16 +1,17 @@
 from sqlalchemy import Column, Integer, String, Boolean,ForeignKey
 from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
+from mftplus.model.tools.validator import *
 
 
 class Letter(Base):
     __tablename__ = "letter_tbl"
     _id = Column('id', Integer, primary_key=True, autoincrement=True)
     _sender = Column("sender", String(20), nullable=False)
-    _reciver = Column("receiver", String(20), nullable=False)
+    _receiver = Column("receiver", String(20), nullable=False)
     _group = Column("group", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
-    _priarty = Column("priority", String(20), nullable=False)
+    _priority = Column("priority", String(20), nullable=False)
     _status = Column("status", Boolean, defult=True)
     _deleted = Column("deleted", Boolean, default=False)
 
