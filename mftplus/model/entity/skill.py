@@ -4,12 +4,12 @@ from mftplus.model.entity.base import *
 
 class Skill(Base):
     __tablename__ = "skill_tbl"
-    _id = Column(Integer, primary_key=True)
-    _group= Column(String)
-    _title = Column(String)
-    _description = Column(String)
-    _license= Column(String)
-    _deleted = Column(Boolean,default=False)
+    _id = Column("id",Integer, primary_key=True)
+    _group= Column("group",String)
+    _title = Column("title",String)
+    _description = Column("description",String)
+    _license= Column("license",String)
+    _deleted = Column("deleted",Boolean,default=False)
 
     def __init__(self, group, title, description, license):
         self._id= None

@@ -23,3 +23,53 @@ class Lesson(Base):
         self.teacher = teacher
         self.status = status
         self.deleted = deleted
+
+    def get_id(self):
+        return self._id
+
+    def set_id(self, id):
+        self._id = id
+
+    def get_group(self):
+        return self._group
+
+    def set_group(self, group):
+        self._group = group
+
+    def get_department(self):
+        return self._department
+
+    def set_department(self, department):
+        self._department = department
+
+    def get_title(self):
+        return self._title
+
+    def set_title(self, title):
+        self._title = title
+
+    def get_code(self):
+        return self._code
+
+    def set_code(self, code):
+        self._code = code
+
+    def get_teacher(self):
+        return self._teacher
+
+    def set_teacher(self, teacher):
+        self._teacher = teacher
+
+    def get_status(self):
+        return self._status
+
+    def set_status(self, status):
+        self._status = status
+
+    id = property(get_id, set_id)
+    group = property(get_group, set_group)
+    department = property(get_department, set_department)
+    title = property(get_title, set_title)
+    code = property(get_code, set_code)
+    teacher = property(get_teacher, set_teacher)
+    status = property(get_status, set_status)
