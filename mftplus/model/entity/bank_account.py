@@ -24,6 +24,12 @@ class BankAccount(Base):
         self.card_number = card_number
         self.account_type = accunt_type
         self.status = status
+
+    def get_id(self):
+        return self._id
+    def set_id(self,id):
+        self._id = id
+
     def get_bank(self):
         return self._bank
 
@@ -66,3 +72,10 @@ class BankAccount(Base):
     def set_status(self, status):
         self._status = status
 
+    id = property(get_id,set_id)
+    bank = property(get_bank,set_bank)
+    branch = property(get_branch,set_branch)
+    account_number = property(get_account_number,set_account_number)
+    card_number = property(get_card_number,set_card_number)
+    account_type = property(get_account_type,set_account_type)
+    status = property(get_status,set_status)

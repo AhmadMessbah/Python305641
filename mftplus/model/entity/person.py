@@ -6,15 +6,15 @@ from mftplus.model.entity.base import Base
 
 class Person(Base):
     __tablename__ = "person_tbl"
-    _id = Column("id", Integer, primary_key=True, autoincrement=True)
-    _name = Column("name", String(20), nullable=False)
-    _family = Column("family", String(20), nullable=False)
-    _status = Column("status", Boolean, default=True)
+    id = Column("id", Integer, primary_key=True, autoincrement=True)
+    name = Column("name", String(20), nullable=False)
+    family = Column("family", String(20), nullable=False)
+    status = Column("status", Boolean, default=True)
 
     def __init__(self, name, family, status=True):
-        self.id = None
-        self.name = name
-        self.family = family
-        self.status = status
+        self._id = None
+        self._name = name
+        self._family = family
+        self._status = status
 
     # getter / setter
