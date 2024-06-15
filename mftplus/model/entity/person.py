@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy.orm import relationship
 
 from mftplus.model.entity.base import Base
 
