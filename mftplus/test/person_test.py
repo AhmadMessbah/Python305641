@@ -7,6 +7,7 @@ from mftplus.model.entity.sim_card import SimCard
 # sim_da.save(sim_card)
 # print(sim_card)
 
+
 person = Person("ahmad","messbah")
 # person.sim_card = sim_card
 person_da = DataAccess(Person)
