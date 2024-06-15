@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, DateTime
 
 from mftplus.model.entity.base import Base
-
+from datetime import datetime
 
 class Ticket(Base):
     __tablename__ = "ticket_tbl"
@@ -10,16 +10,16 @@ class Ticket(Base):
     _title = Column("title", String(20), nullable=False)
     _text = Column("text", String(100), nullable=False)
     _sender = Column("sender", String(20), nullable=False)
-    _datetime = Column("datetime", String(20), nullable=False)
+    _date_time = Column("date_time", DateTime, nullable=False)
     _status = Column("status", Boolean, default=True)
 
-    def __init__(self, group, title, text, sender, datetime, status=True):
+    def __init__(self, group, title, text, sender, date_time, status=True):
         self.id = None
         self.group = group
         self.title = title
         self.text = text
         self.sender = sender
-        self.datetime = datetime
+        self.date_time = date_time
         self.status = status
 
     @property
@@ -48,12 +48,15 @@ class Ticket(Base):
         self._text = text
         
     @property
-    def datetime(self):
-        return self._datetime
+    def date_time(self):
+        return self._date_time
     
-    @datetime.setter
-    def datetime(self,datetime):
-        self._datetime = datetime
+    @date_time.setter
+    def date_time(self,date_time):
+        if isinstance(date_time, datetime):
+            self._date_time = date_time
+        else:
+            raise ValueError("Invalid DateTime")
 
     @property
     def status(self):
@@ -61,4 +64,7 @@ class Ticket(Base):
 
     @status.setter
     def status(self,status):
-        self._status = status
+        if isinstance(status, bool):
+            self._status = status
+        else:
+            raise ValueError("Invalid Status")
