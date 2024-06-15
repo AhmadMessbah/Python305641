@@ -1,10 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean
 from mftplus.model.entity.base import Base
-from mftplus.model.tools.car_validator import *
+from mftplus.model.tools.validator import *
 
 
 class Car(Base):
-    __tablename__ = "car_table"
+    __tablename__ = "car_tbl"
     _id = Column("id", Integer, primary_key = True, autoincrement = True)
     _name = Column("name", String(20), nullable = False)
     _model = Column("model", String(20), nullable = False)
@@ -17,10 +17,6 @@ class Car(Base):
         self._model = model
         self._man_date = man_date
         self._deleted = deleted
-
-
-    def __repr__(self):
-        return f"{self.__dict__}"
 
 
     def get_id(self):

@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, Boolean
 from mftplus.model.entity.base import Base
 
 class BankAccount(Base):
-    __tablename__ = "bank_account"
+    __tablename__ = "bank_account_tbl"
     _id = Column("id",Integer, primary_key=True, autoincrement=True)
     _bank = Column("bank",String(30), nullable=False)
     _branch = Column("branch",String(30), nullable=False)
@@ -20,5 +20,4 @@ class BankAccount(Base):
         self._card_number = card_number
         self._account_type = accunt_type
         self._status = status
-    def __repr__(self):
-        return f"{self.__dict__}"
+

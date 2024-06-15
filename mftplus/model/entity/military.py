@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean
-from military.tools.validator import *
+from mftplus.model.tools.validator import *
 from mftplus.model.entity.base import Base
 import re
 
@@ -23,14 +23,11 @@ class Military(Base):
         self._status  = status
         self._deleted = deleted
 
-    def __repr__(self):
-        return str(self.__dict__)
-
     def get_serial(self):
         return self._serial
 
     def set_serial(self, serial):
-        self._serial = serial_validator(serial, "invalid serial")
+        self._serial = military_serial_validator(serial, "invalid serial")
 
 
     def get_date(self):

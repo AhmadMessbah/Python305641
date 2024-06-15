@@ -4,7 +4,7 @@ from mftplus.model.entity.base import Base
 
 
 class Job(Base):
-    __tablename__ = "person_tbl"
+    __tablename__ = "job_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _title = Column("title", String(20), nullable=False)
     _organisation = Column("organisation", String(20), nullable=False)

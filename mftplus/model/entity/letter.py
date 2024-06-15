@@ -7,25 +7,23 @@ class Letter(Base):
     __tablename__ = "letter_tbl"
     _id = Column('id', Intiger, primary_key=True, autoincrement=True)
     _sender = Column("sender", String(20), nullable=False)
-    _reciver = Column("reciver", String(20), nullable=False)
+    _reciver = Column("receiver", String(20), nullable=False)
     _group = Column("group", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
-    _priarty = Column("priarty", String(20), nullable=False)
+    _priarty = Column("priority", String(20), nullable=False)
     _status = Column("status", Boolean, defult=True)
     _deleted = Column("deleted", Boolean, default=False)
 
-    def __init__(self, sender, reciver, group, titel, priarty, status, deleted=False):
+    def __init__(self, sender, receiver, group, title, priority, status, deleted=False):
         self.id = None
         self.sender = sender
-        self.reciver = reciver
+        self.receiver = receiver
         self.group = group
-        self.title = titel
-        self.priarty = priarty
+        self.title = title
+        self.priority = priority
         self.status = status
         self.deleted = deleted
 
-    def __repr__(self):
-        return f"{self.__dict__}"
 
     # sender
     @property
