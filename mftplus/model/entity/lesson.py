@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean
 
 from mftplus.model.entity.base import Base
+from mftplus.model.tools.validator import code_validator,group_validator
 
 
 class Lesson(Base):
@@ -34,31 +35,36 @@ class Lesson(Base):
         return self._group
 
     def set_group(self, group):
-        self._group = group
+        if group_validator(group):
+            self._group = group
 
     def get_department(self):
         return self._department
 
     def set_department(self, department):
-        self._department = department
+        if group_validator(department):
+            self._department = department
 
     def get_title(self):
-        return self._title
+            return self._title
 
     def set_title(self, title):
-        self._title = title
+        if group_validator(title):
+            self._title = title
 
     def get_code(self):
         return self._code
 
     def set_code(self, code):
-        self._code = code
+        if code_validator(code):
+            self._code = code
 
     def get_teacher(self):
         return self._teacher
 
     def set_teacher(self, teacher):
-        self._teacher = teacher
+        if group_validator(teacher):
+             self._teacher = teacher
 
     def get_status(self):
         return self._status
