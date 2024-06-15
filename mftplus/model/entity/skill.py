@@ -7,8 +7,8 @@ class Skill(Base):
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _group = Column("group", String(20))
     _title = Column("title", String(40))
-    _description = Column("description", String)
-    _license = Column("license", String)
+    _description = Column("description", String(20))
+    _license = Column("license", String(20))
     _deleted = Column("deleted", Boolean, default=False)
 
     def __init__(self, group, title, description, license):
@@ -26,28 +26,28 @@ class Skill(Base):
         self._id = id
 
     def get_title(self):
-        return self._title
+        return self.title
 
     def set_title(self, title):
-        self._title = title
+        self.title = title
 
     def get_description(self):
-        return self._description
+        return self.description
 
     def set_description(self, description):
         self._description = description
 
     def get_license(self):
-        return self._license
+        return self.license
 
     def set_license(self, license):
-        self._license = license
+        self.license = license
 
     def get_deleted(self):
-        return self._deleted
+        return self.deleted
 
     def set_deleted(self, deleted):
-        self._deleted = deleted
+        self.deleted = deleted
 
     id = property(get_id, set_id)
     group = property(get_title, set_title)
