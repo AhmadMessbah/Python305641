@@ -1,8 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
-
+from mftplus.model.tools.validator import TicketValidator
 from mftplus.model.entity.base import Base
-from datetime import datetime
 
 
 class Ticket(Base):
@@ -19,7 +18,7 @@ class Ticket(Base):
 
     owner_id = Column(Integer, ForeignKey("person_tbl.id"))
 
-    def __init__(self, owner_id, group, title, text, sender, date_time, status=True, deleted=False,):
+    def __init__(self, owner_id, group, title, text, sender, date_time, status=True, deleted=False, ):
         self.id = None
         self.group = group
         self.title = title
@@ -27,7 +26,7 @@ class Ticket(Base):
         self.sender = sender
         self.date_time = date_time
         self.status = status
-        self.deleted = status
+        self.deleted = deleted
         self.owner_id = owner_id
 
     @property
@@ -36,7 +35,8 @@ class Ticket(Base):
 
     @group.setter
     def group(self, group):
-        self._group = group
+        self._group = TicketValidator.name_validator(group, "Invalid Group")
+
 
     @property
     def title(self):
@@ -44,7 +44,7 @@ class Ticket(Base):
 
     @title.setter
     def title(self, title):
-        self._title = title
+        self._title = TicketValidator.name_validator(title, "Invalid Title")
 
     @property
     def text(self):
@@ -52,7 +52,7 @@ class Ticket(Base):
 
     @text.setter
     def text(self, text):
-        self._text = text
+        self._text = TicketValidator.text_validator(text, "Invalid Text")
 
     @property
     def sender(self):
@@ -60,18 +60,16 @@ class Ticket(Base):
 
     @sender.setter
     def sender(self, sender):
-        self._sender = sender
+        self._sender = TicketValidator.name_validator(sender, "Invalid Sender")
+
     @property
     def date_time(self):
         return self._date_time
 
     @date_time.setter
     def date_time(self, date_time):
-        print(type(date_time))
-        if isinstance(date_time, datetime):
-            self._date_time = date_time
-        else:
-            raise ValueError("Invalid DateTime")
+        self._date_time = TicketValidator.date_time_validator(date_time, "Invalid Date")
+
 
     @property
     def status(self):
@@ -98,5 +96,6 @@ class Ticket(Base):
 
 from mftplus.model.entity.person import Person
 from mftplus.model.da.da import engine
+
 Ticket.owner = relationship("Person")
 Base.metadata.create_all(engine)
