@@ -1,10 +1,12 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime , ForeignKey 
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
 from mftplus.model.entity.base import Base
 from datetime import datetime
 
+
 class Ticket(Base):
+    print("ticket")
     __tablename__ = "ticket_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _group = Column("group", String(20), nullable=False)
@@ -15,11 +17,9 @@ class Ticket(Base):
     _status = Column("status", Boolean, default=True)
     _deleted = Column("deleted", Boolean, default=False)
 
+    owner_id = Column(Integer, ForeignKey("person_tbl.id"))
 
-    owner_id = Column(Integer, ForeignKey("person_tbl.id") )
-    owner = relationship("Person")
-    
-    def __init__(self, group, title, text, sender, date_time, status=True,deleted=False):
+    def __init__(self, owner_id, group, title, text, sender, date_time, status=True, deleted=False,):
         self.id = None
         self.group = group
         self.title = title
@@ -28,38 +28,46 @@ class Ticket(Base):
         self.date_time = date_time
         self.status = status
         self.deleted = status
-        self.owner_id = None
+        self.owner_id = owner_id
 
     @property
     def group(self):
         return self._group
-    
+
     @group.setter
-    def group(self,group):
+    def group(self, group):
         self._group = group
 
     @property
     def title(self):
         return self._title
-    
+
     @title.setter
-    def title(self,title):
+    def title(self, title):
         self._title = title
 
     @property
     def text(self):
         return self._text
-    
+
     @text.setter
-    def text(self,text):
+    def text(self, text):
         self._text = text
-        
+
+    @property
+    def sender(self):
+        return self._sender
+
+    @sender.setter
+    def sender(self, sender):
+        self._sender = sender
     @property
     def date_time(self):
         return self._date_time
-    
+
     @date_time.setter
-    def date_time(self,date_time):
+    def date_time(self, date_time):
+        print(type(date_time))
         if isinstance(date_time, datetime):
             self._date_time = date_time
         else:
@@ -70,7 +78,7 @@ class Ticket(Base):
         return self._status
 
     @status.setter
-    def status(self,status):
+    def status(self, status):
         if isinstance(status, bool):
             self._status = status
         else:
@@ -81,8 +89,14 @@ class Ticket(Base):
         return self._deleted
 
     @deleted.setter
-    def deleted(self,deleted):
+    def deleted(self, deleted):
         if isinstance(deleted, bool):
             self._deleted = deleted
         else:
             raise ValueError("Invalid deleted")
+
+
+from mftplus.model.entity.person import Person
+from mftplus.model.da.da import engine
+Ticket.owner = relationship("Person")
+Base.metadata.create_all(engine)
