@@ -15,8 +15,9 @@ def bank_validator(bank):
 
 def title_validator(title):
     if isinstance(title, str) and re.match(r"^[A-Za-z]{10}$", title):
-        return title
-    raise ValueError("Invalid title")
+        return True
+    else:
+        raise ValueError("Invalid title")
 
 
 
