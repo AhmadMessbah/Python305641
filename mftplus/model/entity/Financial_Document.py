@@ -33,7 +33,7 @@ class FinancialDocument(Base):
     @date_time.setter
     def get_data_time(self,date_time):
        if isinstance(date_time, datetime):
-            self._data_time
+            self._data_time = date_time
        else:
             raise ValueError("Invalid DataTime")
 
