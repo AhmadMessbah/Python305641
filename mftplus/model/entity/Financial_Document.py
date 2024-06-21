@@ -30,8 +30,13 @@ class FinancialDocument(Base):
     def set_amount(self, amount):
         self._amount = amount
 
-    def get_data_time(self):
-        return self._data_time
+
+    @date_time.setter
+    def get_data_time(self,date_time):
+       if isinstance(date_time, datetime):
+            self._data_time
+       else:
+            raise ValueError("Invalid DataTime")
 
     def set_doc_type(self, doc_type):
         self._doc_type = doc_type
