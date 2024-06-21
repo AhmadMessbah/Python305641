@@ -29,6 +29,8 @@ class Ticket(Base):
         self.deleted = deleted
         self.owner_id = owner_id
 
+
+
     @property
     def group(self):
         return self._group
