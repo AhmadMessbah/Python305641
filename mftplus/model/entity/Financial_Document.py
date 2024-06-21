@@ -3,6 +3,7 @@ from mftplus.model.tools.validator import *
 from mftplus.model.entity.base import Base
 
 
+
 class FinancialDocument(Base):
     __tablename__ = 'financial_document_tbl'
     _id = Column("id", Integer, primary_key=True, auto_increment=True)
