@@ -37,7 +37,6 @@ class Ticket(Base):
     def group(self, group):
         self._group = TicketValidator.name_validator(group, "Invalid Group")
 
-
     @property
     def title(self):
         return self._title
@@ -69,7 +68,6 @@ class Ticket(Base):
     @date_time.setter
     def date_time(self, date_time):
         self._date_time = TicketValidator.date_time_validator(date_time, "Invalid Date")
-
 
     @property
     def status(self):
