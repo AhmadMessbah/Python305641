@@ -1,8 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from mftplus.model.tools.validator import *
 from mftplus.model.entity.base import Base
-
-
+from datetime import datetime
 
 class FinancialDocument(Base):
     __tablename__ = 'financial_document_tbl'
@@ -30,7 +29,6 @@ class FinancialDocument(Base):
 
     def set_amount(self, amount):
         self._amount = amount
-
 
     @date_time.setter
     def get_data_time(self,date_time):
