@@ -60,3 +60,9 @@ def code_validator(self, code):
         return code
     else:
         raise ValueError("Invalid code")
+
+def group_validator(self, group):
+    if isinstance(group, str) and re.match("^[z-zA-Z]$", date):
+        return group
+    else:
+        raise ValueError("Invalid group")
