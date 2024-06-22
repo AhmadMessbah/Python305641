@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean
 
 from mftplus.model.entity.base import Base
-from mftplus.model.tools.validator import code_validator,group_validator
+from mftplus.model.tools.validator import code_validator , group_validator
 
 
 class Lesson(Base):
