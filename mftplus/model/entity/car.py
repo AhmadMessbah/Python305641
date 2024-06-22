@@ -9,7 +9,7 @@ class Car(Base):
     _id = Column("id", Integer, primary_key = True, autoincrement = True)
     _name = Column("name", String(20), nullable = False)
     _model = Column("model", String(20), nullable = False)
-    _man_date = Column("man date", Boolean, default = True)
+    _man_date = Column("man_date", Boolean, default = True)
     _deleted = Column("deleted", Boolean, default = False)
 
     owner_id = Column(Integer, ForeignKey("person_tbl.id"))
