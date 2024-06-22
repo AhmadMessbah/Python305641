@@ -1,5 +1,5 @@
 from mftplus.model.da.da import DataAccess
-from mftplus.model.entity.Financial_Document import FinancialDocument
+from mftplus.model.entity.financial_document import FinancialDocument
 from mftplus.model.entity.person import Person
 
 
