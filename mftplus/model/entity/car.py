@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
 
-
+# todo : kiana : validator
 class Car(Base):
     __tablename__ = "car_tbl"
     _id = Column("id", Integer, primary_key = True, autoincrement = True)

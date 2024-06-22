@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, Boolean, String
 from mftplus.model.entity.base import *
 
-
+# todo : negar : validator
 class Skill(Base):
     __tablename__ = "skill_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)

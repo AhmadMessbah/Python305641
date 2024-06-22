@@ -3,7 +3,7 @@ from mftplus.model.tools.validator import *
 from mftplus.model.entity.base import Base
 from datetime import datetime
 
-# todo : syntax check - getter setter - validator
+# todo : simin : syntax check - getter setter - validator
 class FinancialDocument(Base):
     __tablename__ = 'financial_document_tbl'
     _id = Column("id", Integer, primary_key=True, auto_increment=True)

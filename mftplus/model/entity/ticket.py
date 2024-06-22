@@ -93,9 +93,3 @@ class Ticket(Base):
         else:
             raise ValueError("Invalid deleted")
 
-
-from mftplus.model.entity.person import Person
-from mftplus.model.da.da import engine
-
-Ticket.owner = relationship("Person")
-Base.metadata.create_all(engine)

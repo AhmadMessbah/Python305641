@@ -3,13 +3,14 @@ from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
 
+# todo : dornika : validator
 
 class Letter(Base):
     __tablename__ = "letter_tbl"
     _id = Column('id', Integer, primary_key=True, autoincrement=True)
     _sender = Column("sender", String(20), nullable=False)
     _receiver = Column("receiver", String(20), nullable=False)
-    _group = Column("group", String(20), nullable=False)
+    _letter_group = Column("letter_group", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
     _priority = Column("priority", String(20), nullable=False)
     _status = Column("status", Boolean, defult=True)
@@ -18,11 +19,11 @@ class Letter(Base):
     person_id= Column(Integer, ForeignKey("person_tbl.id"))
     person= relationship("Person")
 
-    def __init__(self, sender, receiver, group, title, priority, status, deleted=False):
+    def __init__(self, sender, receiver, letter_group, title, priority, status, deleted=False):
         self.id = None
         self.sender = sender
         self.receiver = receiver
-        self.group = group
+        self.letter_group = letter_group
         self.title = title
         self.priority = priority
         self.status = status
@@ -47,23 +48,23 @@ class Letter(Base):
     def receiver(self, receiver):
         self.receiver = receiver
 
-    # group
+    # letter_group
     @property
-    def group(self):
-        return self._group
+    def letter_group(self):
+        return self._letter_group
 
-    @group.setter
-    def group(self, group):
-        self._group = group
+    @letter_group.setter
+    def letter_group(self, letter_group):
+        self._letter_group = letter_group
 
     # titel
     @property
     def title(self):
-        return self.title
+        return self._title
 
     @title.setter
-    def titel(self, title):
-        self.title = title
+    def title(self, title):
+        self._title = title
 
     # priarty
     @property
@@ -82,3 +83,5 @@ class Letter(Base):
     @status.setter
     def status(self, status):
         self._status = status
+
+

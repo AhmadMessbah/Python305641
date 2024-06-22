@@ -4,6 +4,7 @@ from mftplus.model.entity.base import Base
 from sqlalchemy.orm import relationship
 import re
 
+# todo : mohammad : validator
 
 class Military(Base):
     __tablename__ = "military_tbl"
