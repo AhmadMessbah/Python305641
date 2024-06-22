@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
 from mftplus.model.entity.base import Base
+import re
 
 # todo : ali : validator
 class Employeement(Base):
@@ -30,13 +31,18 @@ class Employeement(Base):
     def get_name(self):
         return self._name
     def set_name(self, name):
-        self._name = name
+        if name_validator(name):
+            self._name = name
+        else:
+            raise ValueError("Invalid name")
 
     def get_family(self):
         return self._family
     def set_family(self,family):
-        self._family = family
-
+        if name_validator(family):
+            self._family = family
+        else:
+            raise ValueError("Invalid family")
     def get_insurance(self):
         return self._insurance
     def set_insurance(self, insurance):
@@ -60,4 +66,7 @@ class Employeement(Base):
     insurance = property(get_insurance,set_insurance)
     pay_ment = property(get_pay_ment,set_pay_ment)
 
+
+def name_validator(name):
+    return re.match(r"^[a-zA-Z\s]$",name)
 
