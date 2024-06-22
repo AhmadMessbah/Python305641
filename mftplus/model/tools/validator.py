@@ -54,3 +54,15 @@ def military_status_validator(self, status):
         self._status = status
     else:
         raise ValueError("Invalid status")
+
+def code_validator(self, code):
+    if isinstance(code, int) and re.match(r"^[0-9]$", code):
+        return code
+    else:
+        raise ValueError("Invalid code")
+
+def group_validator(self, group):
+    if isinstance(group, int) and re.match(r"^[a-zA-Z]$", group):
+        return group
+    else:
+        raise ValueError("Invalid group")
