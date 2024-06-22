@@ -2,7 +2,12 @@ from datetime import datetime, date
 import re
 
 
+# todo : kiana
 def car_name_validator(name):
+    pass
+
+# todo : kiana
+def car_model_validator(model):
     pass
 
 

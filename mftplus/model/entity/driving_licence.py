@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime
 from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
 
-
+# todo : bashir charkhab : validator
 class DrivingLicense(Base):
     __tablename__ = "driving_license_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)

@@ -3,6 +3,7 @@ from mftplus.model.tools.validator import *
 from mftplus.model.entity.base import Base
 from datetime import datetime
 
+# todo : syntax check - getter setter - validator
 class FinancialDocument(Base):
     __tablename__ = 'financial_document_tbl'
     _id = Column("id", Integer, primary_key=True, auto_increment=True)
@@ -30,17 +31,20 @@ class FinancialDocument(Base):
     def set_amount(self, amount):
         self._amount = amount
 
-    @date_time.setter
-    def get_data_time(self,date_time):
+    def date_time(self):
+        return self._date_time
+
+    def set_date_time(self,date_time):
        if isinstance(date_time, datetime):
             self._data_time = date_time
        else:
             raise ValueError("Invalid DataTime")
+
 
     def set_doc_type(self, doc_type):
         self._doc_type = doc_type
 
     id = property(get_id, set_id)
     amount = property(get_amount, set_amount)
-    date_time = property(get_data_time, set_data_time)
+    date_time = property(get_date_time, set_date_time)
     doc_type = property(get_doc_type, set_doc_type)

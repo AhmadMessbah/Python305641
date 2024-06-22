@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 
 from mftplus.model.entity.base import Base
 
+# todo : ali : validator
 class Employeement(Base):
     __tablename__ = "employeement_tbl"
     _id = Column("id",Integer, primery_key=True,autoincrement=True)
@@ -53,10 +54,6 @@ class Employeement(Base):
             raise ValueError("invalid input paymentation")
 
 
-
-
-
-
     id = property(get_id,set_id)
     name = property(get_name,set_name)
     family = property(get_family,set_family)
@@ -64,4 +61,3 @@ class Employeement(Base):
     pay_ment = property(get_pay_ment,set_pay_ment)
 
 
-pey_ment1 = Employee("Pey","<EMAIL>","ali",True,"a")

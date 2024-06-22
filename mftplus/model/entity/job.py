@@ -26,8 +26,6 @@ class Job(Base):
         self.deleted = deleted
         self.person = None
 
-    # getter / setter
-
     def get_id(self):
         return self._id
     def set_id(self,id):
