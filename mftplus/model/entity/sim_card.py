@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 
 from mftplus.model.entity.base import Base
 
+# todo : roksana : getter setter validator !!!
 
 class SimCard(Base):
     __tablename__ = 'sim_card_tbl'
