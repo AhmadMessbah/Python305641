@@ -74,6 +74,7 @@ class Military(Base):
     def set_deleted(self, deleted):
         self._deleted = deleted
 
+
     id = property(get_id, set_id)
     serial = property(get_serial, set_serial)
     date = property(get_date, set_date)

@@ -90,7 +90,7 @@ def military_status_validator(status, message):
 
 
 def code_validator(code, message):
-    if isinstance(code, str) and re.match(r"^[0-9]{2,20}$", code):
+    if isinstance(code, str) and re.match(r"^[0-9]{2,30}$", code):
         return code
     else:
         raise ValueError(message)
