@@ -1,5 +1,6 @@
 import re
 
+
 def name_validator(name, message):
     if isinstance(name, str) and re.match(r"^[a-zA-Z\s]{2,30}$", name):
         return name
@@ -42,13 +43,13 @@ def date_time_validator(date_time_value, message):
         raise ValueError(message)
 
 
-
-
 def car_name_validator(name):
     ...
 
+
 def car_model_validator(model):
     ...
+
 
 def bank_validator(bank):
     return re.match("^[A-Za-z]{10}$", bank)
@@ -57,42 +58,39 @@ def bank_validator(bank):
 from datetime import datetime, date
 
 
-def military_serial_validator(serial):
-    if isinstance(serial, int):
+# military validator
+
+def military_serial_validator(serial, message):
+    if isinstance(serial, str) and re.match(r"^\s[0-9]{20}$", serial):
         return serial
     else:
-        raise ValueError("Invalid serial number")
+        raise ValueError(message)
 
 
-def military_date_validator(date):
-    if isinstance(date, int):
-        return date
-    else:
-        raise ValueError("Invalid date")
 
-
-def military_location_validator(location):
-    if isinstance(location, str) and re.match(r"^[0-9]+$", location):
+def military_location_validator(location, message):
+    if isinstance(location, str) and re.match(r"^[0-9]{2,30}$", location):
         return location
     else:
-        raise ValueError("Invalid location")
+        raise ValueError(message)
 
 
-def military_organization_validator(organization):
-    if isinstance(organization, str) and re.match(r"^[0-9]+$", organization):
+def military_organization_validator(organization, message):
+    if isinstance(organization, str) and re.match(r"^[0-9]{2,30}$", organization):
         return organization
     else:
-        raise ValueError("Invalid organization")
+        raise ValueError(message)
 
 
-def military_status_validator(self, status):
+def military_status_validator(status, message):
     if isinstance(status, bool):
-        self._status = status
+        return status
     else:
-        raise ValueError("Invalid status")
+        raise ValueError(message)
 
-def code_validator(self, code):
-    if isinstance(code, int) and re.match(r"^[0-9]$", code):
+
+def code_validator(code, message):
+    if isinstance(code, str) and re.match(r"^[0-9]{2,20}$", code):
         return code
     else:
-        raise ValueError("Invalid code")
+        raise ValueError(message)

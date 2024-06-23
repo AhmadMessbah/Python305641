@@ -1,14 +1,15 @@
-from sqlalchemy import Column, Integer, String, Boolean , ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from mftplus.model.tools.validator import *
 from mftplus.model.entity.base import Base
 from sqlalchemy.orm import relationship
 import re
 
+
 # todo : mohammad : validator
 
 class Military(Base):
     __tablename__ = "military_tbl"
-    _id = Column(Integer, primary_key=True , autoincrement=True)
+    _id = Column(Integer, primary_key=True, autoincrement=True)
     _serial = Column("serial", String(30))
     _date = Column("date", Integer)
     _location = Column("location", String(20))
@@ -16,17 +17,16 @@ class Military(Base):
     _status = Column("status", Integer)
     _deleted = Column("deleted", Boolean, default=False)
 
-
-    owner_id = Column(Integer,ForeignKey("person_tbl.id"))
+    owner_id = Column(Integer, ForeignKey("person_tbl.id"))
     owner = relationship("Person")
 
-    def __init__(self, id , serial , date , location , organization , status , deleted):
+    def __init__(self, id, serial, date, location, organization, status, deleted):
         self._id = None
         self._serial = serial
         self._date = date
         self._location = location
         self._organization = organization
-        self._status  = status
+        self._status = status
         self._deleted = deleted
 
     def __repr__(self):
@@ -38,19 +38,17 @@ class Military(Base):
     def set_id(self, id):
         self._id = id
 
-
     def get_serial(self):
         return self._serial
 
     def set_serial(self, serial):
         self._serial = military_serial_validator(serial, "invalid serial")
 
-
     def get_date(self):
         return self._date
 
     def set_date(self, date):
-        self._date = military_date_validator (date, "invalid date")
+        self._date = date_validator(date, "invalid date")
 
     def get_location(self):
         return self._location
@@ -68,15 +66,13 @@ class Military(Base):
         return self._status
 
     def set_status(self, status):
-        self._status = military_status_validator(status,"invalid status")
-
+        self._status = military_status_validator(status, "invalid status")
 
     def get_deleted(self):
         return self._deleted
 
     def set_deleted(self, deleted):
         self._deleted = deleted
-
 
     id = property(get_id, set_id)
     serial = property(get_serial, set_serial)
