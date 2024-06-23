@@ -1,3 +1,5 @@
+import re
+
 from sqlalchemy import Column, Integer, String, Boolean,ForeignKey
 from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
@@ -85,3 +87,36 @@ class Letter(Base):
         self._status = status
 
 
+def sender_validator(self,sender):
+    if isinstance(sender,str) and re.match(r"^[a-zA-Z]{2,20}&",sender):
+        return sender
+    else:
+        raise ValueError("invalid sender")
+
+
+def receiver_validator(self,receiver):
+    if isinstance(receiver,str) and re.match(r"^[a-zA-Z]{2,20}&",receiver):
+        return receiver
+    else:
+        raise ValueError("invalid receiver")
+
+
+def letter_group_validator(self,letter_group):
+    if isinstance(letter_group,str) and re.match(r"^[a-zA-Z]{2,20}&",letter_group):
+        return letter_group
+    else:
+        raise ValueError("invalid letter group")
+
+
+def title_validator(self,title):
+    if isinstance(title,str) and re.match(r"^[a-zA-Z]{2,20}&",title):
+        return title
+    else:
+        raise ValueError("invalid title")
+
+
+def priority_validator(self,priority):
+    if isinstance(priority,str) and re.match(r"^[a-zA-Z]{2,20}&",priority):
+        return priority
+    else:
+        raise ValueError("invalid priority")
