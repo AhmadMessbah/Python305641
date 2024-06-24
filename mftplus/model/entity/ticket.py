@@ -19,11 +19,12 @@ class Ticket(Base):
     sender = relationship("Person")
     
     def __init__(self, group, title, text, sender, date_time, status=True, deleted=False):
+        print(sender.id,"---------")
         self.id = None
         self.group = group
         self.title = title
         self.text = text
-        self.sender = sender
+        self.sender_id = sender.id
         self.date_time = date_time
         self.status = status
         self.deleted = deleted
@@ -54,14 +55,6 @@ class Ticket(Base):
     @text.setter
     def text(self, text):
         self._text = TicketValidator.text_validator(text, "Invalid Text")
-
-    # @property
-    # def sender(self):
-    #     return self._sender
-    #
-    # @sender.setter
-    # def sender(self, sender):
-    #     self._sender = sender #TicketValidator.name_validator(sender, "Invalid Sender")
 
     @property
     def date_time(self):
