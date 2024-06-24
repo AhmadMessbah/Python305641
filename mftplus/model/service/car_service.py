@@ -4,6 +4,7 @@ from mftplus.model.entity.car import Car
 
 
 class CarService:
+    pass
     # todo find by name,mode,man_date_range
     # @staticmethod
     # def save(car):
