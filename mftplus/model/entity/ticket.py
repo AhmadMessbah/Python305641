@@ -5,7 +5,6 @@ from mftplus.model.entity.base import Base
 
 
 class Ticket(Base):
-    print("ticket")
     __tablename__ = "ticket_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _group = Column("group", String(20), nullable=False)
