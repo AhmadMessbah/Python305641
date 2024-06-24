@@ -7,6 +7,7 @@ from mftplus.model.entity.driving_licence import DrivingLicense
 from mftplus.model.entity.job import Job
 from mftplus.model.entity.lesson import Lesson
 from mftplus.model.entity.letter import Letter
+from mftplus.model.entity.medical_report import MedicalReport
 from mftplus.model.entity.person import Person
 from mftplus.model.entity.skill import Skill
 
@@ -30,7 +31,7 @@ person = session.get(Person, 1)
 print(person)
 
 d = datetime.now()
-entity = Letter("ahmad","ali", "group", "title", "pri", False, True)
+entity =MedicalReport("dis", "gtou",d,False)
 entity.person = person
 
 
