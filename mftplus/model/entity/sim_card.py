@@ -5,7 +5,7 @@ from mftplus.model.entity.base import Base
 
 # todo : roksana : getter setter validator !!!
 
-class SimCard(Base):
+class SimCard:
     __tablename__ = 'sim_card_tbl'
 
     _id = Column("id", Integer, primary_key=True, autoincrement=True)

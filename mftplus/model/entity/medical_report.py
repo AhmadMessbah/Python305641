@@ -5,7 +5,7 @@ from mftplus.model.entity.base import Base
 
 # todo : roya : validator
 
-class MedicalReport(Base):
+class MedicalReport:
     __tablename__ = "medical_report_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _disease = Column("disease", String(20), nullable=False)

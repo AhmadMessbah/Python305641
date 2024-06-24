@@ -7,7 +7,7 @@ from mftplus.model.tools.validator import *
 
 # todo : dornika : validator
 
-class Letter(Base):
+class Letter:
     __tablename__ = "letter_tbl"
     _id = Column('id', Integer, primary_key=True, autoincrement=True)
     _sender = Column("sender", String(20), nullable=False)

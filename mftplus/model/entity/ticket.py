@@ -4,7 +4,7 @@ from mftplus.model.tools.validator import TicketValidator
 from mftplus.model.entity.base import Base
 
 
-class Ticket(Base):
+class Ticket:
     print("ticket")
     __tablename__ = "ticket_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)

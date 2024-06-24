@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, Boolean, String
 from mftplus.model.entity.base import *
 
 # todo : negar : validator
-class Skill(Base):
+class Skill:
     __tablename__ = "skill_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _group = Column("group", String(20))

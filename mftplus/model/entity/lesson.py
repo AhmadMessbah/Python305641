@@ -5,7 +5,7 @@ from mftplus.model.tools.validator import *
 
 # todo : maedeh : validator
 
-class Lesson(Base):
+class Lesson:
     __tablename__ = "lesson_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _lesson_group = Column("lesson_group", String(20), nullable=False)

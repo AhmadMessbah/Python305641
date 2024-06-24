@@ -7,7 +7,7 @@ import re
 
 # todo : mohammad : validator
 
-class Military(Base):
+class Military:
     __tablename__ = "military_tbl"
     _id = Column(Integer, primary_key=True, autoincrement=True)
     _serial = Column("serial", String(30))

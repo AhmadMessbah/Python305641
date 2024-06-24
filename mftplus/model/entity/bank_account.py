@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 
 from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
-class BankAccount(Base):
+class BankAccount:
     __tablename__ = "bank_account_tbl"
     _id = Column("id",Integer, primary_key=True, autoincrement=True)
     _bank = Column("bank",String(30), nullable=False)
@@ -46,7 +46,7 @@ class BankAccount(Base):
         return self._account_number
 
     def set_account_number(self, account_number):
-        if isinstance("account_number",Integer):
+        if isinstance("account_number",int):
             self._account_number = account_number
         else:
             raise ValueError("Invalid Account Number")
@@ -55,7 +55,7 @@ class BankAccount(Base):
         return self._card_number
 
     def set_card_number(self, card_number):
-        if isinstance("card_number",Integer):
+        if isinstance("card_number",int):
             self._card_number = card_number
         else:
             raise ValueError("Invalid Card Number")

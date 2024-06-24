@@ -5,7 +5,7 @@ from mftplus.model.entity.base import Base
 import re
 
 # todo : ali : validator
-class Employeement(Base):
+class Employeement:
     __tablename__ = "employeement_tbl"
     _id = Column("id",Integer, primery_key=True,autoincrement=True)
     _name = Column("name",String(20),nullable=False)
