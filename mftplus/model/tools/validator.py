@@ -1,5 +1,23 @@
 import re
 
+class Validator:
+    @staticmethod
+    def name_validator(name, message):
+        if isinstance(name, str) and re.match(r"^[a-zA-Z\s]{2,30}$", name):
+            return name
+        else:
+            raise ValueError(message)
+
+    @staticmethod
+    def national_id_validator(national_id, message):
+        if isinstance(national_id, str) and re.match(r"^\d{10}$", national_id):
+            return national_id
+        else:
+            raise ValueError(message)
+
+
+
+# todo : class
 
 def name_validator(name, message):
     if isinstance(name, str) and re.match(r"^[a-zA-Z\s]{2,30}$", name):
