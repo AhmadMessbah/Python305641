@@ -1,3 +1,5 @@
+import re
+
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey,DateTime
 from mftplus.model.entity.base import Base
 from sqlalchemy.orm import relationship
@@ -34,14 +36,12 @@ class Job(Base):
     def get_title(self):
         return self._title
     def set_title(self,title):
-        if isinstance(title,str) and title_validator(title):
-            self._title = title
+        self._title = title_validator(title,"invalid title")
 
     def get_organisation(self):
         return self._organisation
     def set_organisation(self,organisation):
-        if isinstance(organisation, str) and title_validator(organisation):
-            self._organisation = organisation
+        self.organisation = title_validator(organisation,"invalid organisation")
 
     def get_start_date(self):
         return self._start_date
@@ -65,6 +65,12 @@ class Job(Base):
     def set_deleted(self,deleted):
         self._deleted = deleted
 
+    def title_validator(title):
+        if isinstance(title, str) and re.match(r"^[A-Za-z]{10}$", title):
+            return True
+        else:
+            raise ValueError("Invalid title")
+
     id = property(get_id,set_id)
     title = property(get_title,set_title)
     organisation = property(get_organisation,set_organisation)
@@ -72,3 +78,10 @@ class Job(Base):
     end_date = property(get_end_date,set_end_date)
     status = property(get_status,set_status)
     deleted = property(get_deleted,set_deleted)
+
+
+def title_validator(title,message):
+    if isinstance(title,str) and re.match(r"^[a-zA-Z\s]$",title):
+        return title
+    else:
+        raise ValueError(message)
