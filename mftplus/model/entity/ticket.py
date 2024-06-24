@@ -17,7 +17,8 @@ class Ticket(Base):
     _deleted = Column("deleted", Boolean, default=False)
 
     owner_id = Column(Integer, ForeignKey("person_tbl.id"))
-
+    owner = relationship("Person")
+    
     def __init__(self, owner_id, group, title, text, sender, date_time, status=True, deleted=False, ):
         self.id = None
         self.group = group
