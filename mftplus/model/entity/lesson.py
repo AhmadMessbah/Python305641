@@ -17,7 +17,7 @@ class Lesson(Base):
     _deleted = Column("deleted", Boolean, default=False)
 
     def __init__(self, lesson_group, department, title, code, teacher, status, deleted=False):
-        self.id = id
+        self.id = None
         self.lesson_group = lesson_group
         self.department = department
         self.title = title
@@ -48,22 +48,22 @@ class Lesson(Base):
         return self._title
 
     def set_title(self, title):
-        if name_validator(title):
-            self._title = title
+        # if name_validator(title):
+        self._title = title
 
     def get_code(self):
         return self._code
 
     def set_code(self, code):
-        if code_validator(code):
-            self._code = code
+        # if code_validator(code):
+        self._code = code
 
     def get_teacher(self):
         return self._teacher
 
     def set_teacher(self, teacher):
-        if name_validator(teacher):
-             self._teacher = teacher
+        # if name_validator(teacher):
+         self._teacher = teacher
 
     def get_status(self):
         return self._status
