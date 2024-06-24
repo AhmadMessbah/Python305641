@@ -19,27 +19,30 @@ from mftplus.model.entity.base import Base
 from mftplus.model.entity.ticket import Ticket
 from mftplus.model.service.person_service import PersonService
 
-connection_string = "mysql+pymysql://root:root123@localhost:3306/mft"
-if not database_exists(connection_string):
-    create_database(connection_string)
+# connection_string = "mysql+pymysql://root:root123@localhost:3306/mft"
+# if not database_exists(connection_string):
+#     create_database(connection_string)
+#
+# engine = create_engine(connection_string)
+# Base.metadata.create_all(engine)
+#
+# Session = sessionmaker(bind=engine)
+# session = Session()
+#
+# person = session.get(Person, 1)
+# print(person)
+#
+# d = datetime.now()
+# entity = Ticket("group","title","text", person, d,False)
+# # entity.person = person
+#
+#
+# session.add(entity)
+# session.commit()
+# session.refresh(entity)
 
-engine = create_engine(connection_string)
-Base.metadata.create_all(engine)
+# print(entity)
+person = Person("Ali", "Alipour")
+PersonService.save(person)
 
-Session = sessionmaker(bind=engine)
-session = Session()
-
-person = session.get(Person, 1)
 print(person)
-
-d = datetime.now()
-entity = Ticket("group","title","text", person, d,False)
-# entity.person = person
-
-
-session.add(entity)
-session.commit()
-session.refresh(entity)
-
-print(entity)
-
