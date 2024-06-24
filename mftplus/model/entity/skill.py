@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, Boolean, String
 from mftplus.model.entity.base import *
 
+
 # todo : negar : validator
 class Skill(Base):
     __tablename__ = "skill_tbl"
@@ -11,7 +12,7 @@ class Skill(Base):
     _license = Column("license", String(20))
     _deleted = Column("deleted", Boolean, default=False)
 
-    def __init__(self, group, title, description, license):
+    def __init__(self, group, title, description, license, deleted=False):
         self.id = None
         self.group = group
         self.title = title
@@ -32,19 +33,19 @@ class Skill(Base):
         self._title = title
 
     def get_description(self):
-        return self.description
+        return self._description
 
     def set_description(self, description):
         self._description = description
 
     def get_license(self):
-        return self.license
+        return self._license
 
     def set_license(self, license):
         self._license = license
 
     def get_deleted(self):
-        return self.deleted
+        return self._deleted
 
     def set_deleted(self, deleted):
         self._deleted = deleted

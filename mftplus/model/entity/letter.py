@@ -15,8 +15,8 @@ class Letter(Base):
     _letter_group = Column("letter_group", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
     _priority = Column("priority", String(20), nullable=False)
-    _status = Column("status", Boolean, defult=True)
-    _deleted = Column("deleted", Boolean, default=False)
+    _status = Column("status", Boolean)
+    _deleted = Column("deleted", Boolean)
 
     person_id= Column(Integer, ForeignKey("person_tbl.id"))
     person= relationship("Person")
@@ -44,11 +44,11 @@ class Letter(Base):
     # reciver
     @property
     def receiver(self):
-        return self.receiver
+        return self._receiver
 
     @receiver.setter
     def receiver(self, receiver):
-        self.receiver = receiver
+        self._receiver = receiver
 
     # letter_group
     @property
@@ -71,11 +71,11 @@ class Letter(Base):
     # priarty
     @property
     def priority(self):
-        return self.priority
+        return self._priority
 
     @priority.setter
     def priority(self, priority):
-        self.priority = priority
+        self._priority = priority
 
     # status
     @property

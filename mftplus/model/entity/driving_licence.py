@@ -19,18 +19,17 @@ class DrivingLicense(Base):
     _deleted = Column("deleted", Boolean, default=False)
 
     owner_id = Column(Integer, ForeignKey("person_tbl.id"))
-
     owner = relationship("Person")
 
-    def __init__(self, owner_id, serial, license_type, start_data_time, expire_data_time, status=True, deleted=False):
+    def __init__(self, serial, license_type, start_date_time, expire_date_time, status=True, deleted=False):
         self._id = None
         self._serial = serial
         self._license_type = license_type
-        self._start_data_time = start_data_time
-        self._expire_data_time = expire_data_time
+        self._start_date_time = start_date_time
+        self._expire_date_time = expire_date_time
         self._status = status
         self._deleted = deleted
-        self._owner_id = owner_id
+        self._owner = None
 
     @property
     def id(self):

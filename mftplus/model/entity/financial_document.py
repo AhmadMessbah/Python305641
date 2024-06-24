@@ -4,7 +4,7 @@ from mftplus.model.entity.base import Base
 from datetime import datetime
 
 # todo : simin : syntax check - getter setter - validator
-class FinancialDocument(Base):
+class FinancialDocument:
     __tablename__ = 'financial_document_tbl'
     _id = Column("id", Integer, primary_key=True, auto_increment=True)
     _amount = Column("amount", Integer, default=0)

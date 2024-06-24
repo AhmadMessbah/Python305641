@@ -11,7 +11,7 @@ class Military(Base):
     __tablename__ = "military_tbl"
     _id = Column(Integer, primary_key=True, autoincrement=True)
     _serial = Column("serial", String(30))
-    _date = Column("date", Integer)
+    military_date= Column("military_date", Integer)
     _location = Column("location", String(20))
     _organization = Column("organization", String(30))
     _status = Column("status", Integer)
@@ -20,17 +20,14 @@ class Military(Base):
     owner_id = Column(Integer, ForeignKey("person_tbl.id"))
     owner = relationship("Person")
 
-    def __init__(self, id, serial, date, location, organization, status, deleted):
+    def __init__(self, serial, military_date, location, organization, status, deleted):
         self._id = None
         self._serial = serial
-        self._date = date
+        self._military_date = military_date
         self._location = location
         self._organization = organization
         self._status = status
         self._deleted = deleted
-
-    def __repr__(self):
-        return str(self.__dict__)
 
     def get_id(self):
         return self._id
@@ -44,11 +41,11 @@ class Military(Base):
     def set_serial(self, serial):
         self._serial = military_serial_validator(serial, "invalid serial")
 
-    def get_date(self):
-        return self._date
+    def get_military_date(self):
+        return self._military_date
 
-    def set_date(self, date):
-        self._date = date_validator(date, "invalid date")
+    def set_military_date(self, date):
+        self._military_date = date_validator(date, "invalid date")
 
     def get_location(self):
         return self._location
@@ -77,7 +74,7 @@ class Military(Base):
 
     id = property(get_id, set_id)
     serial = property(get_serial, set_serial)
-    date = property(get_date, set_date)
+    military_date = property(get_military_date, set_military_date)
     location = property(get_location, set_location)
     organization = property(get_organization, set_organization)
     status = property(get_status, set_status)

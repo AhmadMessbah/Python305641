@@ -1,24 +1,24 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
-from mftplus.model.tools.validator import TicketValidator
+#from mftplus.model.tools.validator import TicketValidator
 from mftplus.model.entity.base import Base
-
+from datetime import datetime
+import re
 
 class Ticket(Base):
-    print("ticket")
     __tablename__ = "ticket_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _group = Column("group", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
     _text = Column("text", String(100), nullable=False)
-    _sender = Column("sender", String(20), nullable=False)
+    sender_id = Column("sender_id", Integer, ForeignKey("person_tbl.id"))
     _date_time = Column("date_time", DateTime, nullable=False)
     _status = Column("status", Boolean, default=True)
     _deleted = Column("deleted", Boolean, default=False)
 
-    owner_id = Column(Integer, ForeignKey("person_tbl.id"))
-
-    def __init__(self, owner_id, group, title, text, sender, date_time, status=True, deleted=False, ):
+    sender = relationship("Person")
+    
+    def __init__(self, group, title, text, sender, date_time, status=True, deleted=False):
         self.id = None
         self.group = group
         self.title = title
@@ -27,7 +27,7 @@ class Ticket(Base):
         self.date_time = date_time
         self.status = status
         self.deleted = deleted
-        self.owner_id = owner_id
+        self.owner = None
 
 
 
@@ -55,13 +55,13 @@ class Ticket(Base):
     def text(self, text):
         self._text = TicketValidator.text_validator(text, "Invalid Text")
 
-    @property
-    def sender(self):
-        return self._sender
-
-    @sender.setter
-    def sender(self, sender):
-        self._sender = TicketValidator.name_validator(sender, "Invalid Sender")
+    # @property
+    # def sender(self):
+    #     return self._sender
+    #
+    # @sender.setter
+    # def sender(self, sender):
+    #     self._sender = sender #TicketValidator.name_validator(sender, "Invalid Sender")
 
     @property
     def date_time(self):
@@ -93,3 +93,24 @@ class Ticket(Base):
         else:
             raise ValueError("Invalid deleted")
 
+class TicketValidator:
+    @classmethod
+    def name_validator(cls, name, message):
+        if isinstance(name, str) and re.match(r'^[a-zA-Z\s]{3,20}$', name):
+            return name
+        else:
+            raise ValueError(message)
+
+    @classmethod
+    def text_validator(cls, text, message):
+        if isinstance(text, str) and re.match(r'^.{1,100}$', text):
+            return text
+        else:
+            raise ValueError(message)
+
+    @classmethod
+    def date_time_validator(cls, date, message):
+        if isinstance(date, datetime):
+            return date
+        else:
+            raise ValueError(message)

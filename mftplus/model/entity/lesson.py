@@ -17,7 +17,7 @@ class Lesson(Base):
     _deleted = Column("deleted", Boolean, default=False)
 
     def __init__(self, lesson_group, department, title, code, teacher, status, deleted=False):
-        self.id = id
+        self.id = None
         self.lesson_group = lesson_group
         self.department = department
         self.title = title
@@ -36,36 +36,34 @@ class Lesson(Base):
         return self._lesson_group
 
     def set_lesson_group(self, lesson_group):
-        if name_validator(lesson_group):
-            self._lesson_group = lesson_group
+        self._lesson_group = name_validator(lesson_group, "Invalid Lesson Group")
 
     def get_department(self):
         return self._department
 
     def set_department(self, department):
-        if name_validator(department):
-            self._department = department
+        self._department = name_validator(department, "Invalid Department")
 
     def get_title(self):
         return self._title
 
     def set_title(self, title):
-        if name_validator(title):
-            self._title = title
+        # if name_validator(title):
+        self._title = title
 
     def get_code(self):
         return self._code
 
     def set_code(self, code):
-        if code_validator(code):
-            self._code = code
+        # if code_validator(code):
+        self._code = code
 
     def get_teacher(self):
         return self._teacher
 
     def set_teacher(self, teacher):
-        if name_validator(teacher):
-             self._teacher = teacher
+        # if name_validator(teacher):
+         self._teacher = teacher
 
     def get_status(self):
         return self._status
