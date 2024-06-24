@@ -1,8 +1,8 @@
 import re
-from datetime import date
-
+from datetime import datetime
 from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime
 from sqlalchemy.orm import relationship
+
 from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import date_time_validator
 
@@ -18,7 +18,11 @@ class DrivingLicense(Base):
     _status = Column("status", Integer)
     _deleted = Column("deleted", Boolean, default=False)
 
-    def __init__(self, serial, license_type, start_data_time, expire_data_time, status=True, deleted=False):
+    owner_id = Column(Integer, ForeignKey("person_tbl.id"))
+
+    owner = relationship("Person")
+
+    def __init__(self, owner_id, serial, license_type, start_data_time, expire_data_time, status=True, deleted=False):
         self._id = None
         self._serial = serial
         self._license_type = license_type
@@ -26,9 +30,7 @@ class DrivingLicense(Base):
         self._expire_data_time = expire_data_time
         self._status = status
         self._deleted = deleted
-
-    owner_id = Column(Integer, ForeignKey("person_tbl.id"))
-    owner = relationship("Person")
+        self._owner_id = owner_id
 
     @property
     def id(self):
@@ -84,7 +86,7 @@ class DrivingLicense(Base):
 
     @deleted.setter
     def deleted(self, deleted):
-        self._deleted = boolean_validator(deleted , "invalid data!!")
+        self._deleted = boolean_validator(deleted, "invalid data!!")
 
 
 def boolean_validator(bool_value, message):
@@ -94,9 +96,9 @@ def boolean_validator(bool_value, message):
         raise ValueError(message)
 
 
-def date_validator(date_value, message):
-    if isinstance(date_value, date):
-        return date_value
+def date_time_validator(date_time_value, message):
+    if isinstance(date_time_value, datetime):
+        return date_time_value
     else:
         raise ValueError(message)
 
