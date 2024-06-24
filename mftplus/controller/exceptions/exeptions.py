@@ -6,3 +6,7 @@ class PersonNotFoundError(Exception):
 class LetterNotFoundError(Exception):
     def __init__(self, *args):
         super().__init__("letter Not Found !!!")
+
+class LessonNotFoundError(Exception):
+    def __init__(self,*args):
+        super().__init__("lesson Not Found !!!")
