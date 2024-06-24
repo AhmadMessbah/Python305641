@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean
-
+import re
 from mftplus.model.entity.base import Base
-from mftplus.model.tools.validator import code_validator , lesson_group_validator
+from mftplus.model.tools.validator import *
 
 # todo : maedeh : validator
 
@@ -36,21 +36,21 @@ class Lesson(Base):
         return self._lesson_group
 
     def set_lesson_group(self, lesson_group):
-        if lesson_group_validator(lesson_group):
+        if name_validator(lesson_group):
             self._lesson_group = lesson_group
 
     def get_department(self):
         return self._department
 
     def set_department(self, department):
-        if lesson_group_validator(department):
+        if name_validator(department):
             self._department = department
 
     def get_title(self):
-            return self._title
+        return self._title
 
     def set_title(self, title):
-        if lesson_group_validator(title):
+        if name_validator(title):
             self._title = title
 
     def get_code(self):
@@ -64,7 +64,7 @@ class Lesson(Base):
         return self._teacher
 
     def set_teacher(self, teacher):
-        if lesson_group_validator(teacher):
+        if name_validator(teacher):
              self._teacher = teacher
 
     def get_status(self):
@@ -80,3 +80,15 @@ class Lesson(Base):
     code = property(get_code, set_code)
     teacher = property(get_teacher, set_teacher)
     status = property(get_status, set_status)
+
+def leasson_group_validator(lesson_group , message):
+    if isinstance(lesson_group, str) and re.match("^[A-Za-z]{2-20}$", lesson_group):
+        return lesson_group
+    else:
+        raise ValueError(message)
+
+def code_validator(code, message):
+    if isinstance(code, int) and re.match("^[0-9]{2-10}$", code):
+        return code
+    else:
+        raise ValueError(message)

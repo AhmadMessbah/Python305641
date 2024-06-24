@@ -43,12 +43,26 @@ def date_time_validator(date_time_value, message):
         raise ValueError(message)
 
 
-def car_name_validator(name):
-    ...
+def car_name_validator(name, message):
+    if isinstance(name, str) and re.match(r"^[a-zA-Z\s]{2,30}$", name):
+        return name
+    else:
+        raise ValueError(message)
+
+def car_model_validator(model, message):
+    if isinstance(model, str) and re.match(r"^[a-zA-Z\s]{2,30}$", model):
+        return model
+    else:
+        raise ValueError(message)
+
+def man_date_validator(man_date, message):
+    if isinstance(man_date, man_date):   #جلوی این man_date اول، چی باید بنویسم؟
+        return man_date
+    else:
+        raise ValueError(message)
 
 
-def car_model_validator(model):
-    ...
+
 
 
 def bank_validator(bank):
