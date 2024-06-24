@@ -2,7 +2,8 @@ from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 #from mftplus.model.tools.validator import TicketValidator
 from mftplus.model.entity.base import Base
-
+from datetime import datetime
+import re
 
 class Ticket(Base):
     __tablename__ = "ticket_tbl"
