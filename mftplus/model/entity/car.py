@@ -38,7 +38,7 @@ class Car(Base):
         if car_name_validator(name):
             self._name = name
         else:
-            raise ValueError("Invalid Name")
+            raise ValueError("Invalid Name")   #تو قسمت validator که اعتبارسنجی کردم، اینجا دیگه نیاز نیست اینو بنویسم؟
 
 
     def get_model(self):
