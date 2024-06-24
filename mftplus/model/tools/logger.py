@@ -18,3 +18,5 @@ class Logger:
     @staticmethod
     def debug(text):
         logging.debug(text)
+
+
