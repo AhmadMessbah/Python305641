@@ -32,7 +32,7 @@ person = session.get(Person, 1)
 print(person)
 
 d = datetime.now()
-entity =Military(12345, d,"Tehran", "Police" ,False,False)
+entity = Skill("group","title","descr", "lice", False)
 entity.person = person
 
 
