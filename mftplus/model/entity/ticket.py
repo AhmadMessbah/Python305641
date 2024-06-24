@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
-from mftplus.model.tools.validator import TicketValidator
+#from mftplus.model.tools.validator import TicketValidator
 from mftplus.model.entity.base import Base
 
 
@@ -93,3 +93,24 @@ class Ticket(Base):
         else:
             raise ValueError("Invalid deleted")
 
+class TicketValidator:
+    @classmethod
+    def name_validator(cls, name, message):
+        if isinstance(name, str) and re.match(r'^[a-zA-Z\s]{3,20}$', name):
+            return name
+        else:
+            raise ValueError(message)
+
+    @classmethod
+    def text_validator(cls, text, message):
+        if isinstance(text, str) and re.match(r'^.{1,100}$', text):
+            return text
+        else:
+            raise ValueError(message)
+
+    @classmethod
+    def date_time_validator(cls, date, message):
+        if isinstance(date, datetime):
+            return date
+        else:
+            raise ValueError(message)
