@@ -26,7 +26,7 @@ class Skill:
         self._id = id
 
     def get_title(self):
-        return self.title
+        return self._title
 
     def set_title(self, title):
         self._title = title

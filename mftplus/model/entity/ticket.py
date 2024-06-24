@@ -1,11 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
-from mftplus.model.tools.validator import TicketValidator
+#from mftplus.model.tools.validator import TicketValidator
 from mftplus.model.entity.base import Base
 
 
-class Ticket:
-    print("ticket")
+class Ticket(Base):
     __tablename__ = "ticket_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _group = Column("group", String(20), nullable=False)
@@ -17,7 +16,8 @@ class Ticket:
     _deleted = Column("deleted", Boolean, default=False)
 
     owner_id = Column(Integer, ForeignKey("person_tbl.id"))
-
+    owner = relationship("Person")
+    
     def __init__(self, owner_id, group, title, text, sender, date_time, status=True, deleted=False, ):
         self.id = None
         self.group = group
@@ -93,3 +93,24 @@ class Ticket:
         else:
             raise ValueError("Invalid deleted")
 
+class TicketValidator:
+    @classmethod
+    def name_validator(cls, name, message):
+        if isinstance(name, str) and re.match(r'^[a-zA-Z\s]{3,20}$', name):
+            return name
+        else:
+            raise ValueError(message)
+
+    @classmethod
+    def text_validator(cls, text, message):
+        if isinstance(text, str) and re.match(r'^.{1,100}$', text):
+            return text
+        else:
+            raise ValueError(message)
+
+    @classmethod
+    def date_time_validator(cls, date, message):
+        if isinstance(date, datetime):
+            return date
+        else:
+            raise ValueError(message)
