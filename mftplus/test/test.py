@@ -16,6 +16,7 @@ from sqlalchemy import create_engine, and_, or_
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists
 from mftplus.model.entity.base import Base
+from mftplus.model.entity.ticket import Ticket
 from mftplus.model.service.person_service import PersonService
 
 connection_string = "mysql+pymysql://root:root123@localhost:3306/mft"
@@ -32,8 +33,8 @@ person = session.get(Person, 1)
 print(person)
 
 d = datetime.now()
-entity = Skill("group","title","descr", "lice", False)
-entity.person = person
+entity = Ticket("group","title","text", person, d,False)
+# entity.person = person
 
 
 session.add(entity)
