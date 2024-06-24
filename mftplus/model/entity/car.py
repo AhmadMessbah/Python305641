@@ -4,7 +4,7 @@ from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
 
 # todo : kiana : validator
-class Car(Base):
+class Car:
     __tablename__ = "car_tbl"
     _id = Column("id", Integer, primary_key = True, autoincrement = True)
     _name = Column("name", String(20), nullable = False)
@@ -55,10 +55,10 @@ class Car(Base):
         return self._man_date
 
     def set_man_date(self, man_date):
-        if man_date(man_date):
-            self._man_date = man_date
-        else:
-            raise ValueError("Invalid man_date")
+        # if man_date(man_date):
+        self._man_date = man_date
+        # else:
+        #     raise ValueError("Invalid man_date")
 
 
     id = property(get_id, set_id)
