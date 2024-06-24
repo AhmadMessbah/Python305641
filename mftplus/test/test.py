@@ -33,9 +33,7 @@ person = session.get(Person, 1)
 print(person)
 
 d = datetime.now()
-entity = Ticket("group","title","text", person, d,False)
-# entity.person = person
-
+entity = Letter('aaa','kkkk','kkkk','sss','kkkk',True,True)
 
 session.add(entity)
 session.commit()
