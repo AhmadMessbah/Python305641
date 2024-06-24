@@ -5,7 +5,7 @@ from mftplus.model.tools.validator import *
 
 # todo : maedeh : validator
 
-class Lesson:
+class Lesson(Base):
     __tablename__ = "lesson_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _lesson_group = Column("lesson_group", String(20), nullable=False)
@@ -36,15 +36,13 @@ class Lesson:
         return self._lesson_group
 
     def set_lesson_group(self, lesson_group):
-        if name_validator(lesson_group):
-            self._lesson_group = lesson_group
+        self._lesson_group = name_validator(lesson_group, "Invalid Lesson Group")
 
     def get_department(self):
         return self._department
 
     def set_department(self, department):
-        if name_validator(department):
-            self._department = department
+        self._department = name_validator(department, "Invalid Department")
 
     def get_title(self):
         return self._title
