@@ -5,6 +5,7 @@ from mftplus.model.entity.base import Base
 from datetime import datetime
 import re
 
+
 class Ticket(Base):
     __tablename__ = "ticket_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
@@ -17,9 +18,8 @@ class Ticket(Base):
     _deleted = Column("deleted", Boolean, default=False)
 
     sender = relationship("Person")
-    
+
     def __init__(self, group, title, text, sender, date_time, status=True, deleted=False):
-        print(sender.id,"---------")
         self.id = None
         self.group = group
         self.title = title
@@ -30,7 +30,13 @@ class Ticket(Base):
         self.deleted = deleted
         self.owner = None
 
+    @property
+    def id(self):
+        return self._id
 
+    @id.setter
+    def id(self, id):
+        self._id = id
 
     @property
     def group(self):
@@ -85,6 +91,7 @@ class Ticket(Base):
             self._deleted = deleted
         else:
             raise ValueError("Invalid deleted")
+
 
 class TicketValidator:
     @classmethod

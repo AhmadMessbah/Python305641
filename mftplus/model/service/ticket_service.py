@@ -37,5 +37,22 @@ class TicketService:
         ticket_da = DataAccess(Ticket)
         return ticket_da.find_by_id(id)
 
+    @staticmethod
+    def find_by_group(group):
+        ticket_da = DataAccess(Ticket)
+        return ticket_da.find_by(Ticket._group == group)
 
-    # todo : find by group, title, text_contain, sender, date_time_range
+    @staticmethod
+    def find_by_title(title):
+        ticket_da = DataAccess(Ticket)
+        return ticket_da.find_by(Ticket._title == title)
+
+    @staticmethod
+    def find_by_text_content(text_content):
+        ticket_da = DataAccess(Ticket)
+        return ticket_da.check_word_in_text(text_content)
+
+    @staticmethod
+    def date_range(start_date, end_date):
+        ticket_da = DataAccess(Ticket)
+        return ticket_da.find_by_date_range(start_date, end_date)

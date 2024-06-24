@@ -16,9 +16,9 @@ class TicketController:
             return False, f"{e}"
 
     @staticmethod
-    def edit(id, name, family):
+    def edit(group, title, text, sender, date_time):
         try:
-            ticket = Ticket("ahmad", "messbah")
+            ticket = Ticket(group, title, text, sender, date_time)
             ticket.id = id
             TicketService.edit(ticket)
             Logger.info(f"Ticket Edited - {ticket}")
@@ -52,6 +52,45 @@ class TicketController:
         try:
             ticket = TicketService.find_by_id(id)
             Logger.info(f"Ticket FindById({id})")
+            return True, ticket
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"
+    @staticmethod
+    def find_by_group(group):
+        try:
+            ticket = TicketService.find_by_group(group)
+            Logger.info(f"Ticket FindByGroup({group})")
+            return True, ticket
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"
+
+    @staticmethod
+    def find_by_title(title):
+        try:
+            ticket = TicketService.find_by_title(title)
+            Logger.info(f"Ticket FindByTitle({title})")
+            return True, ticket
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"
+
+    @staticmethod
+    def find_by_text_content(text_content):
+        try:
+            ticket = TicketService.find_by_text_content(text_content)
+            Logger.info(f"Ticket FindByTextContent({text_content})")
+            return True, ticket
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"
+
+    @staticmethod
+    def date_range(start_date, end_date):
+        try:
+            ticket = TicketService.date_range(start_date, end_date)
+            Logger.info(f"Ticket FindByTextContent({start_date}-{end_date})")
             return True, ticket
         except Exception as e:
             Logger.error(f"{e}")
