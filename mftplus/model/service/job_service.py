@@ -35,3 +35,6 @@ class JobService:
     def find_by_id(id):
         job_da = DataAccess(Job)
         return job_da.find_by_id(id)
+
+
+    # todo : find by title, organisation , date_range

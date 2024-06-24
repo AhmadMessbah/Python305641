@@ -1,5 +1,8 @@
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 import re
+
+from sqlalchemy.orm import relationship
+
 from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
 
@@ -12,9 +15,11 @@ class Lesson(Base):
     _department = Column("department", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
     _code = Column("code", Integer, nullable=False)
-    _teacher = Column("teacher", String(20), nullable=False)
+    _teacher = Column("teacher", ForeignKey("person_tbl.id"))
     _status = Column("status", Boolean, nullable=False)
     _deleted = Column("deleted", Boolean, default=False)
+
+    teacher = relationship("Person")
 
     def __init__(self, lesson_group, department, title, code, teacher, status, deleted=False):
         self.id = None

@@ -35,3 +35,5 @@ class LessonService:
     def find_by_id(id):
         lesson_da = DataAccess(Lesson)
         return lesson_da.find_by_id(id)
+
+    # todo : group, department, title, code
