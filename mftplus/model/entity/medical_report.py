@@ -26,6 +26,12 @@ class MedicalReport:
         self.date_time = date_time
         self.deleted = deleted
 
+    def get_id(self):
+        return self._id
+
+    def set_id(self, id):
+        self._id = id
+
     def get_disease(self):
         return self._disease
 
