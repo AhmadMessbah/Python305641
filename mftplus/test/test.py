@@ -8,6 +8,7 @@ from mftplus.model.entity.job import Job
 from mftplus.model.entity.lesson import Lesson
 from mftplus.model.entity.letter import Letter
 from mftplus.model.entity.medical_report import MedicalReport
+from mftplus.model.entity.military import Military
 from mftplus.model.entity.person import Person
 from mftplus.model.entity.skill import Skill
 
@@ -31,7 +32,7 @@ person = session.get(Person, 1)
 print(person)
 
 d = datetime.now()
-entity =MedicalReport("dis", "gtou",d,False)
+entity =Military(12345, d,"Tehran", "Police" ,False,False)
 entity.person = person
 
 
