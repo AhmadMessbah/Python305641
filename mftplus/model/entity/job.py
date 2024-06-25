@@ -73,11 +73,7 @@ class Job(Base):
     def set_deleted(self, deleted):
         self._deleted = deleted
 
-    def title_validator(title):
-        if isinstance(title, str) and re.match(r"^[A-Za-z]{10}$", title):
-            return True
-        else:
-            raise ValueError("Invalid title")
+
 
     id = property(get_id, set_id)
     title = property(get_title, set_title)
