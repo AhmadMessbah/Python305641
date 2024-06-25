@@ -11,15 +11,14 @@ class Ticket(Base):
     _group = Column("group", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
     _text = Column("text", String(100), nullable=False)
-    _sender = Column("sender", String(20), nullable=False)
+    sender_id = Column("sender_id", Integer, ForeignKey("person_tbl.id"))
     _date_time = Column("date_time", DateTime, nullable=False)
     _status = Column("status", Boolean, default=True)
     _deleted = Column("deleted", Boolean, default=False)
 
-    owner_id = Column(Integer, ForeignKey("person_tbl.id"))
-    owner = relationship("Person")
+    sender = relationship("Person")
     
-    def __init__(self, owner_id, group, title, text, sender, date_time, status=True, deleted=False, ):
+    def __init__(self, group, title, text, sender, date_time, status=True, deleted=False):
         self.id = None
         self.group = group
         self.title = title
@@ -28,7 +27,7 @@ class Ticket(Base):
         self.date_time = date_time
         self.status = status
         self.deleted = deleted
-        self.owner_id = owner_id
+        self.owner = None
 
 
 
@@ -56,13 +55,13 @@ class Ticket(Base):
     def text(self, text):
         self._text = TicketValidator.text_validator(text, "Invalid Text")
 
-    @property
-    def sender(self):
-        return self._sender
-
-    @sender.setter
-    def sender(self, sender):
-        self._sender = TicketValidator.name_validator(sender, "Invalid Sender")
+    # @property
+    # def sender(self):
+    #     return self._sender
+    #
+    # @sender.setter
+    # def sender(self, sender):
+    #     self._sender = sender #TicketValidator.name_validator(sender, "Invalid Sender")
 
     @property
     def date_time(self):
