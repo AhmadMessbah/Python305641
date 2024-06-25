@@ -3,45 +3,43 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists
 from mftplus.model.entity.base import Base
 
-connection_string = "mysql+pymysql://root:root123@localhost:3306/mft"
-if not database_exists(connection_string):
-    create_database(connection_string)
-
-engine = create_engine(connection_string)
-Base.metadata.create_all(engine)
-
-Session = sessionmaker(bind=engine)
-session = Session()
-
-
-class DataAccess:
+class DataAccess:    
     def __init__(self, class_name):
+        connection_string = "mysql+pymysql://root:root123@localhost:3306/mft"
+        if not database_exists(connection_string):
+            create_database(connection_string)
+
+        engine = create_engine(connection_string)
+        Base.metadata.create_all(engine)
+
+        Session = sessionmaker(bind=engine)
+        self.session = Session()
         self.class_name = class_name
 
     def save(self, entity):
-        session.add(entity)
-        session.commit()
-        session.refresh(entity)
+        self.session.add(entity)
+        self.session.commit()
+        self.session.refresh(entity)
         return entity
 
     def edit(self, entity):
-        session.merge(entity)
-        session.commit()
+        self.session.merge(entity)
+        self.session.commit()
         return entity
 
     def remove(self, entity):
-        session.delete(entity)
-        session.commit()
+        self.session.delete(entity)
+        self.session.commit()
         return entity
 
     def find_all(self):
-        entity_list = session.query(self.class_name).all()
+        entity_list = self.session.query(self.class_name).all()
         return entity_list
 
     def find_by_id(self, id):
-        entity = session.get(self.class_name, id)
+        entity = self.session.get(self.class_name, id)
         return entity
 
     def find_by(self, find_statement):
-        entity = session.query(self.class_name).filter(find_statement).all()
+        entity = self.session.query(self.class_name).filter(find_statement).all()
         return entity
