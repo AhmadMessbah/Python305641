@@ -61,7 +61,7 @@ class MedicalReport:
 
     id = property(get_id, set_id)
     disease = property(get_disease, set_disease)
-    report_group = property(set_report_group(), set_report_group())
+    report_group = property(get_report_group, set_report_group)
     date_time = property(get_date_time, set_date_time)
     deleted = property(get_deleted, set_deleted)
 
