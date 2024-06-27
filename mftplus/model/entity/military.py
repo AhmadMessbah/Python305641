@@ -14,7 +14,7 @@ class Military(Base):
     military_date= Column("military_date", Integer)
     _location = Column("location", String(20))
     _organization = Column("organization", String(30))
-    _status = Column("status", Integer)
+    _status = Column("status", Boolean, default=False)
     _deleted = Column("deleted", Boolean, default=False)
 
     owner_id = Column(Integer, ForeignKey("person_tbl.id"))

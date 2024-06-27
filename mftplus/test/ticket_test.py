@@ -1,16 +1,17 @@
-from mftplus.model.da.da import DataAccess
-from mftplus.model.entity.ticket import Ticket
-from mftplus.model.entity.person import Person
-
+from mftplus.controller.ticket_controller import TicketController
+from mftplus.controller.person_controller import PersonController
 from datetime import datetime
 
+status, person1 = PersonController.save("farbod", "orang")
 now = datetime.today()
-pers1 = Person("farbod", "owrang")
-da = DataAccess(Person)
-da.save(pers1)
+print(TicketController.save("group", "title", "This text is created solely for testing purposes.", person1, now))
 
-tick1 = Ticket(pers1.id, "group", "title", "description", "sender", date_time=now)
-print(tick1)
 
-ticket_da = DataAccess(Ticket)
-ticket_da.save(tick1)
+print(TicketController.findAll())
+print(TicketController.find_by_id(1))
+print(TicketController.find_by_group("group"))
+print(TicketController.find_by_title("title"))
+print(TicketController.find_by_text_content("bar"))
+start_date = datetime(2023, 1, 1)
+end_date = datetime(2023, 12, 31)
+print(TicketController.date_range(start_date, end_date))

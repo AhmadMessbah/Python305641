@@ -4,7 +4,7 @@ from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
 
 # todo : kiana : validator
-class Car:
+class Car(Base):
     __tablename__ = "car_tbl"
     _id = Column("id", Integer, primary_key = True, autoincrement = True)
     _name = Column("name", String(20), nullable = False)
