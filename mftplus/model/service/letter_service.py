@@ -42,3 +42,18 @@ class LetterService:
     def find_by(receiver):
         letter_da = DataAccess(Letter)
         return letter_da.find_by(Letter.receiver == receiver)
+
+    @staticmethod
+    def find_by(letter_group):
+        letter_da =DataAccess(Letter)
+        return letter_da.find_by(Letter.letter_group == letter_group)
+
+    @staticmethod
+    def find_by(title):
+        letter_da = DataAccess(Letter)
+        return letter_da.find_by(Letter.title == title)
+
+    @staticmethod
+    def find_by(priority):
+        letter_da = DataAccess(priority)
+        return letter_da.find_by(Letter.priority == priority)
