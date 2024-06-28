@@ -136,6 +136,7 @@ def disease_validator(disease):
     else:
         raise ValueError("Invalid disease")
 
+
 #-----------------------
 
 

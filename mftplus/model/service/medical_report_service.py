@@ -41,3 +41,4 @@ class MedicalReportService:
     def find_by_disease(disease):
         medical_report_da = DataAccess(MedicalReport)
         return medical_report_da.find_by(MedicalReport.disease == disease)
+

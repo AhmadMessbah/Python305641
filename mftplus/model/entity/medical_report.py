@@ -66,3 +66,4 @@ class MedicalReport:
     deleted = property(get_deleted, set_deleted)
 
 
+
