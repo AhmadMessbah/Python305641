@@ -26,3 +26,8 @@ class TicketNotFoundError(Exception):
 class CarNotFoundError(Exception):
     def __init__(self, *args):
         super().__init__("Car Not Found !!!")
+
+
+class militaryNotFoundError(Exception):
+    def __init__(self, *args):
+        super().__init__("Military Not Found !!!")
