@@ -26,3 +26,9 @@ class TicketNotFoundError(Exception):
 class CarNotFoundError(Exception):
     def __init__(self, *args):
         super().__init__("Car Not Found !!!")
+
+
+
+class MedicalReportNotFoundError(Exception):
+    def __init__(self, *args):
+        super().__init__("MedicalReport Not Found !!!")
