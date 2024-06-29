@@ -5,9 +5,9 @@ from mftplus.model.tools.logger import Logger
 
 class MedicalReportController:
     @staticmethod
-    def save(disease,report_group,date_time):
+    def save(disease,report_group,date_time,person):
         try:
-            medical_report = MedicalReport("stroke", "neurology", 2024)
+            medical_report = MedicalReport(disease,report_group,date_time)
             MedicalReportService.save(medical_report)
             Logger.info(f"MedicalReport Saved - {medical_report}")
             return True, medical_report

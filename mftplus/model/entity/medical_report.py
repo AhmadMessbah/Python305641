@@ -19,12 +19,13 @@ class MedicalReport:
     person_id = Column(Integer, ForeignKey("person_tbl.id"))
     person = relationship("Person")
 
-    def __init__(self, disease, report_group, date_time, deleted=False):
+    def __init__(self, disease, report_group, date_time,person, deleted=False):
         self.id = None
         self.disease = disease
         self.report_group = report_group
         self.date_time = date_time
         self.deleted = deleted
+        self.person_id = person.id
 
     def get_id(self):
         return self._id

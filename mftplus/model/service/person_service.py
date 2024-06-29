@@ -3,6 +3,7 @@ from mftplus.model.da.da import DataAccess
 from mftplus.model.entity.person import Person
 
 
+
 class PersonService:
     @staticmethod
     def save(person):
