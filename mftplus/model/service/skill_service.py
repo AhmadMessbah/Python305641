@@ -40,29 +40,26 @@ class SkillService:
      def find_by_id(id):
          skill_da = DataAccess(Skill)
          return skill_da.find_by_id(id)
-    @staticmethod
-    def find_by_group(group):
+     @staticmethod
+     def find_by_group(group):
        skill_da = DataAccess(Skill)
        return skill_da.find_by_group(group)
 
-
-
-
-
-    @staticmethod
-    def find_by_title(title):
+     @staticmethod
+     def find_by_title(title):
         skill_da = DataAccess(Skill)
         return skill_da.find_by_title(title)
 
-    @staticmethod
-    def find_by_description(description):
+     @staticmethod
+     def find_by_description(description):
         skill_da = DataAccess(Skill)
         return skill_da.find_by_description(description)
 
-    @staticmethod
-    def  find_by_license(license):
+     @staticmethod
+     def  find_by_license(license):
         skill_da = DataAccess(Skill)
         return skill_da.find_by_license(license)
+
 
 
 

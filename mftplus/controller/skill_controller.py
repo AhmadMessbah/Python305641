@@ -7,7 +7,7 @@ class SkillController:
     @staticmethod
     def save(group,title,description,license):
         try:
-            skill= Skill("a", "listening","grade 1","b")
+            skill= Skill(group,title,description,license)
             SkillService.save(skill)
             Logger.info(f"Skill Saved - {skill}")
             return True, skill
@@ -18,7 +18,7 @@ class SkillController:
     @staticmethod
     def edit(id,group,title,description,license):
         try:
-            skill = Skill("a", "writing","updated","a")
+            skill = Skill(id,group,title,description,license)
             skill.id = id
             SkillService.edit(skill)
             Logger.info(f"Skill Edited - {skill}")
