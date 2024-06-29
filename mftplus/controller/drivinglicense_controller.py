@@ -29,7 +29,7 @@ class DrivingLicenseController:
     @staticmethod
     def remove(id):
         try:
-            drive_license = DriveLicenseService.remove(id):
+            drive_license = DriveLicenseService.remove(id)
             Logger.info(f"drive license Removed - {drive_license}")
             return True , drive_license
 
