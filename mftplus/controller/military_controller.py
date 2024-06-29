@@ -5,10 +5,10 @@ from mftplus.model.tools.logger import Logger
 
 class MilitaryController:
     @staticmethod
-    def save(serial, military_date, location, organization, status, deleted):
+    def save(serial, military_date, location, organization, status):
         try:
-            military = Military("123456", 20240201, "Tehran", "orgA", False)
-            Military.save(military)
+            military = Military(serial, military_date, location, organization, status,)
+            MilitaryService.save(military)
             Logger.info(f"military save -{military}")
             return True, military
         except Exception as e:

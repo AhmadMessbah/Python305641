@@ -7,7 +7,7 @@ class CarController:
     @staticmethod
     def save(name, model, man_date):
         try:
-            car = Car("benz", "123sh")
+            car = Car(name, model, man_date)
             CarService.save(car)
             Logger.info(f"Car Saved - {car}")
             return True, car
@@ -18,7 +18,7 @@ class CarController:
     @staticmethod
     def edit(id, name, model, man_date):
         try:
-            car = Car("benz", "123sh")
+            car = Car(name, model, man_date)
             car.id = id
             CarService.edit(car)
             Logger.info(f"Car Edited - {car}")
@@ -26,7 +26,6 @@ class CarController:
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
-
 
     @staticmethod
     def remove(id):
@@ -39,7 +38,7 @@ class CarController:
             return False, f"{e}"
 
     @staticmethod
-    def findAll():
+    def find_all():
         try:
             car_list = CarService.find_all()
             Logger.info(f"Car FindAll()")
@@ -61,7 +60,7 @@ class CarController:
     @staticmethod
     def find_by_name(name):
         try:
-            car =  CarService.find_by_name(name)
+            car = CarService.find_by_name(name)
             Logger.info(f"Car FindByName({name})")
             return True, car
         except Exception as e:
@@ -72,7 +71,7 @@ class CarController:
     def find_by_model(model):
         try:
             car_list = CarService.find_by_model(model)
-            Logger.info(f"Car FindByModel({model})")
+            Logger.info(f"Car Find By Model({model})")
             return True, car_list
         except Exception as e:
             Logger.error(f"{e}")
@@ -81,8 +80,8 @@ class CarController:
     @staticmethod
     def man_date_range(start_date, end_date):
         try:
-            car = CarService.man_date_range(start_date, end_date)
-            Logger.info(f"Car FindByMan_Date_Range({start_date}-{end_date})")
+            car = CarService.find_by_man_date_range(start_date, end_date)
+            Logger.info(f"Car Find By Man Date Range({start_date}-{end_date})")
             return True, car
         except Exception as e:
             Logger.error(f"{e}")

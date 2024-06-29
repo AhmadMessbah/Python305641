@@ -4,7 +4,7 @@ from datetime import datetime
 
 status, person1 = PersonController.save("farbod", "orang")
 now = datetime.today()
-print(TicketController.save("group", "title", "This text is created solely for testing purposes.", person1, now))
+print(TicketController.save("group", "title", "This text is created solely for testing purposes.", person1))
 
 
 print(TicketController.findAll())
@@ -14,4 +14,4 @@ print(TicketController.find_by_title("title"))
 print(TicketController.find_by_text_content("bar"))
 start_date = datetime(2023, 1, 1)
 end_date = datetime(2023, 12, 31)
-print(TicketController.date_range(start_date, end_date))
+print(TicketController.find_by_date_range("2023/01/01", end_date))

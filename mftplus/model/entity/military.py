@@ -20,7 +20,7 @@ class Military(Base):
     owner_id = Column(Integer, ForeignKey("person_tbl.id"))
     owner = relationship("Person")
 
-    def __init__(self, serial, military_date, location, organization, status, deleted):
+    def __init__(self, serial, military_date, location, organization, status, deleted=False):
         self._id = None
         self._serial = serial
         self._military_date = military_date
