@@ -48,11 +48,11 @@ class TicketService:
         return ticket_da.find_by(Ticket._title == title)
 
     @staticmethod
-    def find_by_text_content(text_content):
+    def find_by_text_content(word):
         ticket_da = DataAccess(Ticket)
-        return ticket_da.check_word_in_text(text_content)
+        return ticket_da.find_by(Ticket._text.like(f'%{word}%'))
 
     @staticmethod
-    def date_range(start_date, end_date):
+    def find_by_date_range(start_date, end_date):
         ticket_da = DataAccess(Ticket)
-        return ticket_da.find_by_date_range(start_date, end_date)
+        return ticket_da.find_by(Ticket._date_time.between(start_date, end_date))

@@ -28,8 +28,11 @@ class CarNotFoundError(Exception):
         super().__init__("Car Not Found !!!")
 
 
-
 class MedicalReportNotFoundError(Exception):
     def __init__(self, *args):
         super().__init__("MedicalReport Not Found !!!")
 
+
+class MilitaryInfoNotFoundError(Exception):
+    def __init__(self, *args):
+        super().__init__("Military Info Not Found !!!")
