@@ -5,8 +5,8 @@ from mftplus.model.entity.lesson import Lesson
 class LessonService:
     @staticmethod
     def save(lesson):
-        person_da = DataAccess(Lesson)
-        person_da.save(lesson)
+        lesson_da = DataAccess(Lesson)
+        lesson_da.save(lesson)
         return lesson
 
     @staticmethod
