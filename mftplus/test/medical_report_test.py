@@ -1,8 +1,9 @@
 from mftplus.model.da.da import DataAccess
 from mftplus.model.entity.person import Person
 from mftplus.model.entity.medical_report import MedicalReport
-
-medical_report = MedicalReport("stroke","neorology", None)
+from datetime import datetime
+now = datetime.now()
+medical_report = MedicalReport("stroke","neorology", now)
 medical_report_da = DataAccess(MedicalReport)
 medical_report_da.save(medical_report)
 print(medical_report)
