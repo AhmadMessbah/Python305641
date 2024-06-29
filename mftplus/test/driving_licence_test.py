@@ -6,8 +6,8 @@ from mftplus.model.service.drive_license_service import DriveLicenseService
 # DriveLicenseService.save(lice)
 # print(DriveLicenseService.find_all())
 # print(DriveLicenseService.find_by_id(7))
-# DriveLicenseService.remove(7)
-print(DriveLicenseService.find_by_serial(164141651))
+DriveLicenseService.remove(7)
+# print(DriveLicenseService.find_by_serial(164141651))
 # person = Person("bashir", "charkhab")
 
 # person.da = DataAccess("person")
