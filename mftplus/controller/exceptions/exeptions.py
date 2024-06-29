@@ -38,3 +38,7 @@ class SkillNotFoundError(Exception):
         super().__init__("Skill Not Found !!!")
 
 
+class emloyeeNotFoundError(Exception):
+    def __init__(self,*args):
+        super().__init__("emloyee not found ")
+
