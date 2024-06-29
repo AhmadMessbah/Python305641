@@ -88,3 +88,4 @@ class DrivingLicenseController:
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
+
