@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, Boolean, String
 from mftplus.model.entity.base import *
+import re
 
 
 # todo : negar : validator
@@ -56,3 +57,11 @@ class Skill(Base):
     description = property(get_description, set_description)
     license = property(get_license, set_license)
     deleted = property(get_deleted, set_deleted)
+
+
+
+def skill_group_validator(skill_group , message):
+    if isinstance(skill_group, str) and re.match("^[A-Za-z]$", skill_group):
+        return skill_group
+    else:
+        raise ValueError(message)
