@@ -36,7 +36,7 @@ class MedicalReport:
         return self._disease
 
     def set_disease(self, disease):
-        self._disease = disease_validator(disease)
+        self._disease = disease_validator(disease,"invalid disease")
 
     def get_report_group(self):
         return self._report_group
