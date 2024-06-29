@@ -6,7 +6,7 @@ class LessonController:
     @staticmethod
     def save(lesson_group, department, title, code, teacher, status):
         try:
-            lesson = Lesson("a", "english","vocab",13,"messbah")
+            lesson = Lesson("a", "english","vocab",13,"messbah",0)
             LessonService.save(Lesson)
             Logger.info(f"Lesson Saved - {lesson}")
             return True, lesson
@@ -67,10 +67,10 @@ class LessonController:
             return False, f"{e}"
 
     @staticmethod
-    def find_by_department(department):
+    def find_by_lesson_group(lesson_group):
         try:
-            lesson = LessonService.find_by_department(department)
-            Logger.info(f"Lesson Find By Department({department})")
+            lesson = LessonService.find_by_lesson_group(lesson_group)
+            Logger.info(f"Lesson Find By Lesson Group({lesson_group})")
             return True,lesson
         except Exception as e:
             Logger.error(f"{e}")
@@ -81,6 +81,26 @@ class LessonController:
         try:
             lesson = LessonService.find_by_code(code)
             Logger.info(f"Lesson Find By Code({code})")
+            return True,lesson
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"
+
+    @staticmethod
+    def find_by_title(title):
+        try:
+            lesson = LessonService.find_by_title(title)
+            Logger.info(f"Lesson Find By Title({title})")
+            return True,lesson
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"
+
+    @staticmethod
+    def find_by_department(department):
+        try:
+            lesson = LessonService.find_by_department(department)
+            Logger.info(f"Lesson Find By Department({department})")
             return True,lesson
         except Exception as e:
             Logger.error(f"{e}")
