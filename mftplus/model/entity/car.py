@@ -1,7 +1,11 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
-from mftplus.model.tools.validator import *
+from mftplus.model.tools.validator import car_model_validator
+from mftplus.model.tools.validator import car_name_validator
+from mftplus.model.tools.validator import man_date_validator
+from datetime import datetime
+import re
 
 # todo : kiana : validator
 class Car(Base):
@@ -35,30 +39,20 @@ class Car(Base):
         return self._name
 
     def set_name(self, name):
-        if car_name_validator(name):
-            self._name = name
-        else:
-            raise ValueError("Invalid Name")   #تو قسمت validator که اعتبارسنجی کردم، اینجا دیگه نیاز نیست اینو بنویسم؟
+        self._name = car_name_validator(name)
 
 
     def get_model(self):
         return self._model
 
     def set_model(self, model):
-        if car_model_validator(model):
-            self._model = model
-        else:
-            raise ValueError("Invalid Model")
-
+        self._model = car_model_validator(model)
 
     def get_man_date(self):
         return self._man_date
 
     def set_man_date(self, man_date):
-        # if man_date(man_date):
-        self._man_date = man_date
-        # else:
-        #     raise ValueError("Invalid man_date")
+        self._man_date = man_date_validator(man_date)
 
 
     id = property(get_id, set_id)
