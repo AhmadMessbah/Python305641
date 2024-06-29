@@ -36,7 +36,7 @@ class MedicalReport:
         return self._disease
 
     def set_disease(self, disease):
-        self._disease = disease
+        self._disease = disease_validator(disease)
 
     def get_report_group(self):
         return self._report_group
@@ -65,8 +65,5 @@ class MedicalReport:
     date_time = property(get_date_time, set_date_time)
     deleted = property(get_deleted, set_deleted)
 
-    def disease_validator(disease):
-        if isinstance(disease, str) and re.match(r"^[A-Za-z\s]{30}$", disease):
-            return True
-        else:
-            raise ValueError("Invalid disease")
+
+
