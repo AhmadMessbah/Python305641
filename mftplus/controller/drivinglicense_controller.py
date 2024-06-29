@@ -40,7 +40,9 @@ class DrivingLicenseController:
     @staticmethod
     def find_all():
         try:
-            return DriveLicenseService.find_all()
+            drive_license_list = DriveLicenseService.find_all()
+            Logger.info(f"drive license FindAll()")
+            return True , drive_license_list
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
@@ -48,7 +50,9 @@ class DrivingLicenseController:
     @staticmethod
     def find_by_id(id):
         try:
-            return DriveLicenseService.find_by_id(id)
+            drive_license = DriveLicenseService.find_by_id(id)
+            Logger.info(f"Drive license FindById({id})")
+            return True , drive_license
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
