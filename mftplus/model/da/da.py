@@ -28,7 +28,8 @@ class DataAccess:
         self.session.commit()
         return entity
 
-    def remove(self, entity):
+    def remove(self, id):
+        entity = self.session.get(self.class_name, id)
         self.session.delete(entity)
         self.session.commit()
         return entity
