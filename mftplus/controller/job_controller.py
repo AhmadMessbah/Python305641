@@ -38,7 +38,7 @@ class JobController:
             return False, f"{e}"
 
     @staticmethod
-    def findAll():
+    def find_all():
         try:
             job_list = JobService.find_all()
             Logger.info(f"Job FindAll()")
