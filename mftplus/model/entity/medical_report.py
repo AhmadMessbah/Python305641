@@ -19,12 +19,13 @@ class MedicalReport:
     person_id = Column(Integer, ForeignKey("person_tbl.id"))
     person = relationship("Person")
 
-    def __init__(self, disease, report_group, date_time, deleted=False):
+    def __init__(self, disease, report_group, date_time,person, deleted=False):
         self.id = None
         self.disease = disease
         self.report_group = report_group
         self.date_time = date_time
         self.deleted = deleted
+        self.person_id = person.id
 
     def get_id(self):
         return self._id
@@ -36,7 +37,7 @@ class MedicalReport:
         return self._disease
 
     def set_disease(self, disease):
-        self._disease = disease
+        self._disease = disease_validator(disease,"invalid disease")
 
     def get_report_group(self):
         return self._report_group
@@ -65,8 +66,5 @@ class MedicalReport:
     date_time = property(get_date_time, set_date_time)
     deleted = property(get_deleted, set_deleted)
 
-    def disease_validator(disease):
-        if isinstance(disease, str) and re.match(r"^[A-Za-z\s]{30}$", disease):
-            return True
-        else:
-            raise ValueError("Invalid disease")
+
+

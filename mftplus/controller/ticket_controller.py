@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from mftplus.model.entity.ticket import Ticket
 from mftplus.model.service.ticket_service import TicketService
 from mftplus.model.tools.logger import Logger
@@ -5,9 +7,9 @@ from mftplus.model.tools.logger import Logger
 
 class TicketController:
     @staticmethod
-    def save(group, title, text, sender, date_time):
+    def save(group, title, text, sender):
         try:
-            ticket = Ticket(group, title, text, sender, date_time)
+            ticket = Ticket(group, title, text, sender, datetime.today())
             TicketService.save(ticket)
             Logger.info(f"Ticket Saved - {ticket}")
             return True, ticket
@@ -16,9 +18,9 @@ class TicketController:
             return False, f"{e}"
 
     @staticmethod
-    def edit(group, title, text, sender, date_time):
+    def edit(group, title, text, sender):
         try:
-            ticket = Ticket(group, title, text, sender, date_time)
+            ticket = Ticket(group, title, text, sender, datetime.today())
             ticket.id = id
             TicketService.edit(ticket)
             Logger.info(f"Ticket Edited - {ticket}")
@@ -38,7 +40,7 @@ class TicketController:
             return False, f"{e}"
 
     @staticmethod
-    def findAll():
+    def find_all():
         try:
             ticket_list = TicketService.find_all()
             Logger.info(f"Ticket FindAll()")
@@ -56,6 +58,7 @@ class TicketController:
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
+
     @staticmethod
     def find_by_group(group):
         try:
@@ -87,9 +90,12 @@ class TicketController:
             return False, f"{e}"
 
     @staticmethod
-    def date_range(start_date, end_date):
+    def find_by_date_range(start_date, end_date):
         try:
-            ticket = TicketService.date_range(start_date, end_date)
+            # if(isinstance(start_date,str)):
+            #     start_date = datetime.strptime(start_date.replace("/","-"), "%Y-%m-%d")
+            #     datetime.strptime("", "%Y-%m-%d"
+            ticket = TicketService.find_by_date_range(start_date, end_date)
             Logger.info(f"Ticket FindByTextContent({start_date}-{end_date})")
             return True, ticket
         except Exception as e:

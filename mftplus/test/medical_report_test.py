@@ -1,14 +1,14 @@
-from mftplus.model.da.da import DataAccess
-from mftplus.model.entity.person import Person
-from mftplus.model.entity.medical_report import MedicalReport
+from datetime import datetime
+from mftplus.controller.medical_report_controller import MedicalReport
+from mftplus.controller.person_controller import PersonController
+from mftplus.controller.medical_report_controller import MedicalReportController
 
-medical_report = MedicalReport("stroke","2", None)
-medical_report_da = DataAccess(MedicalReport)
-medical_report_da.save(medical_report)
-print(medical_report)
+from datetime import datetime
+now = datetime.now()
 
-person = Person("ahmad","messbah")
-person.medical_report = medical_report
-person_da = DataAccess(Person)
-person_da.save(person)
-print(person)
+status, person1 = PersonController.save("farbod", "orang")
+now = datetime.today()
+print(MedicalReportController.save("ddd","drtd",now))
+
+
+# print(PersonController.findAll())

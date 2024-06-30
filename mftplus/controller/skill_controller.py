@@ -7,7 +7,7 @@ class SkillController:
     @staticmethod
     def save(group,title,description,license):
         try:
-            skill= Skill("a", "listening","grade 1","b")
+            skill= Skill(group,title,description,license)
             SkillService.save(skill)
             Logger.info(f"Skill Saved - {skill}")
             return True, skill
@@ -18,7 +18,7 @@ class SkillController:
     @staticmethod
     def edit(id,group,title,description,license):
         try:
-            skill = Skill("a", "writing","updated","a")
+            skill = Skill(id,group,title,description,license)
             skill.id = id
             SkillService.edit(skill)
             Logger.info(f"Skill Edited - {skill}")
@@ -42,7 +42,7 @@ class SkillController:
     def findAll():
         try:
             skill_list = SkillService.find_all()
-            Logger.info(f"Person FindAll()")
+            Logger.info(f"Skill FindAll()")
             return True,skill_list
         except Exception as e:
             Logger.error(f"{e}")
@@ -63,7 +63,7 @@ class SkillController:
     def find_by_group(group):
         try:
             group_list = SkillService.find_by_group(group)
-            Logger.info(f"Person FindByGroup({group})")
+            Logger.info(f"Skill FindByGroup({group})")
             return True, group_list
         except Exception as e:
             Logger.error(f"{e}")
