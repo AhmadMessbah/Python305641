@@ -7,7 +7,7 @@ class CarController:
     @staticmethod
     def save(name, model, man_date):
         try:
-            car = Car("benz", "123sh")
+            car = Car(name, model, man_date)
             CarService.save(car)
             Logger.info(f"Car Saved - {car}")
             return True, car
@@ -18,7 +18,7 @@ class CarController:
     @staticmethod
     def edit(id, name, model, man_date):
         try:
-            car = Car("benz", "123sh")
+            car = Car(id, name, model, man_date)
             car.id = id
             CarService.edit(car)
             Logger.info(f"Car Edited - {car}")
@@ -82,7 +82,7 @@ class CarController:
     def man_date_range(start_date, end_date):
         try:
             car = CarService.man_date_range(start_date, end_date)
-            Logger.info(f"Car Find By Man_Date_Range({start_date}-{end_date})")
+            Logger.info(f"Car Find By Man Date Range({start_date}-{end_date})")
             return True, car
         except Exception as e:
             Logger.error(f"{e}")

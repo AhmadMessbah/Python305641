@@ -25,7 +25,7 @@ print(CarController.find_all())
 print(CarController.find_by_id(1))
 print(CarController.find_by_name("benz"))
 print(CarController.find_by_model("123sh"))
-print(CarController.man_date_range(1403/2/12, 1403/4/9))
+print(CarController.man_date_range(1403/2/12, 1403/4/10))
 
 
 
