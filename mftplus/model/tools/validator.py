@@ -1,5 +1,70 @@
 import re
 
+
+def pattern_validator(pattern, message):
+    def inner1(function_name):
+        def inner2(self, text):
+            if isinstance(text,str) and re.match(pattern, text):
+                result = function_name(self, text)
+            else:
+                raise ValueError(message)
+            return result
+        return inner2
+    return inner1
+
+
+def date_validator(message):
+    def inner1(function_name):
+        def inner2(self, date_param):
+            if isinstance(date_param, date):
+                result = function_name(self, date_param)
+            elif isinstance(date_param, str):
+                date_param = date_param.replace('/', '-')
+                try:
+                    date_param = datetime.strptime(date_param, '%Y-%m-%d').date()
+                    result = function_name(self, date_param)
+                except:
+                    raise ValueError(message)
+            else:
+                raise ValueError(message)
+            return result
+        return inner2
+    return inner1
+
+
+def date_time_validator(message):
+    def inner1(function_name):
+        def inner2(self, date_time_param):
+            if isinstance(date_time_param, date):
+                result = function_name(self, date_time_param)
+            elif isinstance(date_time_param, str):
+                date_time_param = date_time_param.replace('/', '-')
+                try:
+                    date_time_param = datetime.strptime(date_time_param, '%Y-%m-%d %H:%M:%S').date()
+                    result = function_name(self, date_time_param)
+                except:
+                    raise ValueError(message)
+            else:
+                raise ValueError(message)
+            return result
+        return inner2
+    return inner1
+
+
+def boolean_validator(message):
+    def inner1(function_name):
+        def inner2(self, bool_param):
+            if isinstance(bool_param, bool):
+                result = function_name(self, bool_param)
+            else:
+                raise ValueError(message)
+            return result
+
+        return inner2
+
+    return inner1
+
+
 class Validator:
     @staticmethod
     def name_validator(name, message):
@@ -14,7 +79,6 @@ class Validator:
             return national_id
         else:
             raise ValueError(message)
-
 
 
 # todo : class
@@ -40,21 +104,21 @@ def positive_int_validator(int_value, message):
         raise ValueError(message)
 
 
-def boolean_validator(bool_value, message):
+def boolean_validator1(bool_value, message):
     if isinstance(bool_value, bool):
         return bool_value
     else:
         raise ValueError(message)
 
 
-def date_validator(date_value, message):
+def date_validator1(date_value, message):
     if isinstance(date_value, date):
         return date_value
     else:
         raise ValueError(message)
 
 
-def date_time_validator(date_time_value, message):
+def date_time_validator1(date_time_value, message):
     if isinstance(date_time_value, datetime):
         return date_time_value
     else:
@@ -67,20 +131,19 @@ def car_name_validator(name, message):
     else:
         raise ValueError(message)
 
+
 def car_model_validator(model, message):
     if isinstance(model, str) and re.match(r"^[a-zA-Z\s]{2,30}$", model):
         return model
     else:
         raise ValueError(message)
 
+
 def man_date_validator(man_date, message):
-    if isinstance(man_date, man_date):   #جلوی این man_date اول، چی باید بنویسم؟
+    if isinstance(man_date, man_date):  # جلوی این man_date اول، چی باید بنویسم؟
         return man_date
     else:
         raise ValueError(message)
-
-
-
 
 
 def bank_validator(bank):
@@ -97,7 +160,6 @@ def military_serial_validator(serial, message):
         return serial
     else:
         raise ValueError(message)
-
 
 
 def military_location_validator(location, message):
@@ -128,16 +190,11 @@ def code_validator(code, message):
         raise ValueError(message)
 
 
-
-#medical_report
+# medical_report
 def disease_validator(disease, message):
     if isinstance(disease, str) and re.match(r"^[a-zA-Z\s]{3,30}$", disease):
         return disease
     else:
         raise ValueError(message)
 
-
-
-#-----------------------
-
-
+# -----------------------

@@ -1,3 +1,5 @@
+from datetime import date
+
 from mftplus.controller.person_controller import PersonController
 from mftplus.model.service.person_service import PersonService
 from mftplus.model.da.da import DataAccess
@@ -6,7 +8,7 @@ from mftplus.model.entity.sim_card import SimCard
 from mftplus.model.tools.logger import Logger
 from mftplus.model.tools.validator import Validator
 
-print(PersonController.save("ahmad", "messbah"))
+# PersonController.save("ahmad", "messbah")
 # مدیریت خطا
     #{
     # اعتبار سنجی
@@ -42,3 +44,4 @@ print(PersonController.save("ahmad", "messbah"))
 
 
 # Validator.name_validator("ali1", "Invalid")
+

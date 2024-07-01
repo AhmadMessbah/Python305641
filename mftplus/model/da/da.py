@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, and_, or_
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists
 from mftplus.model.entity.base import Base
+from mftplus.model.tools.decorators import log
 
 
 class DataAccess:
