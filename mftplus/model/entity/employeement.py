@@ -55,7 +55,7 @@ class Employeement:
         return self._pay_ment
     def set_pay_ment(self,payment):
         if isinstance(pay_ment,int):
-            self._pay_ment = payment
+            self._payment = payment
         else:
             raise ValueError("invalid input paymentation")
 
