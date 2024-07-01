@@ -14,12 +14,12 @@ class Employeement:
     _pay_ment = Column("pay_ment",String(20),nullable=False)
 
 
-    def __init__(self,name,family,insurance,pay_ment):
+    def __init__(self,name,family,insurance,payment):
         self._id = None
         self._name = name
         self._family = family
         self._insurance = insurance
-        self._pay_ment = pay_ment
+        self._payment = payment
 
 
 
@@ -53,9 +53,9 @@ class Employeement:
 
     def get_pay_ment(self):
         return self._pay_ment
-    def set_pay_ment(self,pay_ment):
+    def set_pay_ment(self,payment):
         if isinstance(pay_ment,int):
-            self._pay_ment = pay_ment
+            self._payment = payment
         else:
             raise ValueError("invalid input paymentation")
 
@@ -64,9 +64,10 @@ class Employeement:
     name = property(get_name,set_name)
     family = property(get_family,set_family)
     insurance = property(get_insurance,set_insurance)
-    pay_ment = property(get_pay_ment,set_pay_ment)
+    pay_ment = property(get_pay_ment,set_payment)
 
 
 def name_validator(name):
     return re.match(r"^[a-zA-Z\s]$",name)
 
+ظ

@@ -21,6 +21,7 @@ class Military(Base):
     owner = relationship("Person")
 
     def __init__(self, serial, military_date, location, organization, status, deleted):
+        super().__init__(**kw)
         self._id = None
         self._serial = serial
         self._military_date = military_date
@@ -45,7 +46,7 @@ class Military(Base):
         return self._military_date
 
     def set_military_date(self, date):
-        self._military_date = date_validator(date, "invalid date")
+        self._military_date = date_validator(date)
 
     def get_location(self):
         return self._location

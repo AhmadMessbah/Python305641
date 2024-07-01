@@ -1,12 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-import re
 
 from sqlalchemy.orm import relationship
 
 from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
 
-# todo : maedeh : validator
 
 class Lesson(Base):
     __tablename__ = "lesson_tbl"
@@ -15,13 +13,13 @@ class Lesson(Base):
     _department = Column("department", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
     _code = Column("code", Integer, nullable=False)
-    _teacher = Column("teacher", ForeignKey("person_tbl.id"))
+    _teacher_id = Column("teacher", Integer, ForeignKey("person_tbl.id"))
     _status = Column("status", Boolean, nullable=False)
     _deleted = Column("deleted", Boolean, default=False)
 
     teacher = relationship("Person")
 
-    def __init__(self, lesson_group, department, title, code, teacher, status, deleted=False):
+    def __init__(self, lesson_group, department, title, code, teacher, status=True, deleted=False):
         self.id = None
         self.lesson_group = lesson_group
         self.department = department
@@ -53,22 +51,19 @@ class Lesson(Base):
         return self._title
 
     def set_title(self, title):
-        # if name_validator(title):
         self._title = title
 
     def get_code(self):
         return self._code
 
     def set_code(self, code):
-        # if code_validator(code):
         self._code = code
 
-    def get_teacher(self):
-        return self._teacher
-
-    def set_teacher(self, teacher):
-        # if name_validator(teacher):
-         self._teacher = teacher
+    # def get_teacher(self):
+    #     return self._teacher
+    #
+    # def set_teacher(self, teacher):
+    #     self._teacher = teacher
 
     def get_status(self):
         return self._status
@@ -81,14 +76,16 @@ class Lesson(Base):
     department = property(get_department, set_department)
     title = property(get_title, set_title)
     code = property(get_code, set_code)
-    teacher = property(get_teacher, set_teacher)
+    # teacher = property(get_teacher, set_teacher)
     status = property(get_status, set_status)
 
-def leasson_group_validator(lesson_group , message):
+
+def leasson_group_validator(lesson_group, message):
     if isinstance(lesson_group, str) and re.match("^[A-Za-z]{2-20}$", lesson_group):
         return lesson_group
     else:
         raise ValueError(message)
+
 
 def code_validator(code, message):
     if isinstance(code, int) and re.match("^[0-9]{2-10}$", code):

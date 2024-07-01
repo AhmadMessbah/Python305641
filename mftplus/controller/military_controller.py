@@ -7,7 +7,7 @@ class MilitaryController:
     @staticmethod
     def save(serial, military_date, location, organization, status, deleted):
         try:
-            military = Military("123456", 20240201, "Tehran", "orgA", False)
+            military = Military(serial, military_date, location, organization, status, deleted)
             Military.save(military)
             Logger.info(f"military save -{military}")
             return True, military
@@ -16,9 +16,9 @@ class MilitaryController:
             return False, f"{e}"
 
     @staticmethod
-    def edit(id, serial, military_date, location, organization, status, deleted):
+    def edit(id, serial, military_date, location, organization, status):
         try:
-            military = Military("123456", 20240201, "Tehran", "orgA", False)
+            military = Military(id, serial, military_date, location, organization, status)
             military.id = id
             MilitaryService.edit(military)
             Logger.info(f"military edit -{military}")
@@ -83,6 +83,16 @@ class MilitaryController:
             letter_list = MilitaryController.find_by_organization(organization)
             Logger.info(f"letterFindByOrganization({organization})")
             return True, letter_list
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"
+
+    @staticmethod
+    def date_range(start_date, end_date):
+        try:
+            military = MilitaryService.find_by_date_range(start_date, end_date)
+            Logger.info(f"Military Find By Text Content({start_date}-{end_date})")
+            return True, military
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
