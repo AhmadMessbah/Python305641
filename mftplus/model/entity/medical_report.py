@@ -26,7 +26,7 @@ class MedicalReport(Base):
         self.disease = disease
         self.report_group = report_group
         self.date_time = date_time
-        self.doctor_id = doctor.id
+        self.doctor = doctor
         self.deleted = deleted
 
     def get_id(self):
@@ -50,8 +50,9 @@ class MedicalReport(Base):
     def get_date_time(self):
         return self._date_time
 
+    @date_time_validator(message="invalid date time")
     def set_date_time(self, date_time):
-        self._date_time = date_time_validator(date_time,"invalid date time")
+        self._date_time = date_time
 
     def get_deleted(self):
         return self._deleted
