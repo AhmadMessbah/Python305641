@@ -8,7 +8,7 @@ from mftplus.model.entity.person import Person
 
 # print(JobController.find_all())
 # print(JobController.save("programming","google","2000/10/10","2002/9/9"))
-# print(JobController.edit(1,"programming","google","2000/10/10","2002/9/9"))
-JobController.remove(2)
-# print(JobService.date_range("2000/10/9", "2001/9/9"))
-
+# print(JobController.edit(3,"programming","google","2000/10/10","2002/9/9"))
+# JobController.remove(7)
+# print(JobController.find_by_date_range("2000/10/9", "2001/9/9"))
+print(JobController.find_by_title("ali"))

@@ -26,7 +26,6 @@ class JobController:
             Logger.error(f"{e}")
             return False, f"{e}"
 
-
     @staticmethod
     def remove(id):
         try:
@@ -68,12 +67,11 @@ class JobController:
             return False, f"{e}"
 
     @staticmethod
-    def find_by_organisation(organisation):
+    def find_by_date_range(start_date, end_date):
         try:
-            job_list = JobService.find_by_organisation(organisation)
-            Logger.info(f"Job FindByOrganisation({organisation})")
-            return True,job_list
+            job = JobService.find_by_date_range(start_date, end_date)
+            Logger.info(f"Ticket FindByTextContent({start_date}-{end_date})")
+            return True, job
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
-

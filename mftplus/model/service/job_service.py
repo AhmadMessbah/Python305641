@@ -1,3 +1,4 @@
+
 from mftplus.model.da.da import DataAccess
 from mftplus.model.entity.job import Job
 from mftplus.controller.exceptions.exeptions import JobNotFoundError
@@ -53,12 +54,6 @@ class JobService:
         return job_da.find_by(Job.organisation == organisation)
 
     @staticmethod
-    def date_range(start_date, end_date):
-        try:
-            job = JobService.date_range(start_date, end_date)
-            Logger.info(f"Job FindByTextContent({start_date}-{end_date})")
-            return True, job
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
-
+    def find_by_date_range(start_date, end_date):
+        job_da = DataAccess(Job)
+        return job_da.find_by(Job.date_time.between(start_date, end_date))
