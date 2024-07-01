@@ -1,5 +1,5 @@
 from mftplus.controller.exceptions.exeptions import LessonNotFoundError
-from mftplus.model.da.da import DataAccess
+from mftplus.model.da.da import *
 from mftplus.model.entity.lesson import Lesson
 
 class LessonService:
@@ -41,16 +41,19 @@ class LessonService:
     @staticmethod
     def find_by_lesson_group(lesson_group):
         lesson_da = DataAccess(Lesson)
-        return lesson_da.find_by_lesson_group(lesson_group)
+        return lesson_da.find_by(Lesson.lesson_group == lesson_group)
+
     @staticmethod
     def find_by_department(department):
         lesson_da = DataAccess(Lesson)
-        return lesson_da.find_by_department
+        return lesson_da.find_by(Lesson.department == department)
 
     @staticmethod
     def find_by_title(title):
         lesson_da = DataAccess(Lesson)
         return lesson_da.find_by(Lesson.title == title)
+
+    @staticmethod
     def find_by_code(code):
         lesson_da = DataAccess(Lesson)
-        return lesson_da.find_by_code
+        return lesson_da.find_by(Lesson.code == code)

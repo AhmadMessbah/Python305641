@@ -9,7 +9,7 @@ class LessonController:
     @exception_handling
     def save(cls, lesson_group, department, title, code, teacher):
         lesson = Lesson(lesson_group, department, title, code, teacher)
-        LessonService.save(Lesson)
+        LessonService.save(lesson)
         Logger.info(f"Lesson Saved - {lesson}")
         return True, lesson
 
