@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-import re
 
 from sqlalchemy.orm import relationship
 
@@ -14,7 +13,7 @@ class Lesson(Base):
     _department = Column("department", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
     _code = Column("code", Integer, nullable=False)
-    _teacher = Column("teacher", ForeignKey("person_tbl.id"))
+    _teacher_id = Column("teacher",Integer, ForeignKey("person_tbl.id"))
     _status = Column("status", Boolean, nullable=False)
     _deleted = Column("deleted", Boolean, default=False)
 
@@ -52,21 +51,18 @@ class Lesson(Base):
         return self._title
 
     def set_title(self, title):
-        # if name_validator(title):
         self._title = title
 
     def get_code(self):
         return self._code
 
     def set_code(self, code):
-        # if code_validator(code):
         self._code = code
 
     def get_teacher(self):
         return self._teacher
 
     def set_teacher(self, teacher):
-        # if name_validator(teacher):
         self._teacher = teacher
 
     def get_status(self):

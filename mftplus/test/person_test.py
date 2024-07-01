@@ -8,7 +8,7 @@ from mftplus.model.entity.sim_card import SimCard
 from mftplus.model.tools.logger import Logger
 from mftplus.model.tools.validator import Validator
 
-# PersonController.save("ahmad", "messbah")
+PersonController.save("ahmad", "messbah")
 # مدیریت خطا
     #{
     # اعتبار سنجی
