@@ -1,10 +1,7 @@
-import re
-from datetime import datetime
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, Boolean, DateTime
 
 from mftplus.model.entity.base import Base
-from mftplus.model.tools.validator import date_time_validator
+from mftplus.model.tools.validator import *
 
 
 # todo : bashir charkhab : validator
@@ -45,7 +42,7 @@ class DrivingLicense(Base):
 
     @serial.setter
     def serial(self, serial):
-        self._serial = serial
+        self._serial = serial_validator(serial , "invalid Serial Number !!!")
 
     @property
     def license_type(self):
@@ -101,14 +98,14 @@ def date_time_validator(date_time_value, message):
     else:
         raise ValueError(message)
 
-
+#todo
 def license_type_validator(license_type, message):
     if isinstance(license_type, str) and license in ("b1" | "b2" | "b3"):
         return license_type
     else:
         raise ValueError(message)
 
-
+#todo
 def serial_validator(serial, message):
     if isinstance(serial, str) and re.match(r"^/d{10}", serial):
         return serial
