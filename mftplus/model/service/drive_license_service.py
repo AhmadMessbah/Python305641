@@ -1,3 +1,4 @@
+from mftplus.controller.exceptions.exeptions import DrivingLicenseReportNotFoundError
 from mftplus.model.da.da import DataAccess
 from mftplus.model.entity.driving_licence import DrivingLicense
 
@@ -15,7 +16,7 @@ class DriveLicenseService:
             drive_lice_da.edit(drive_license)
             return drive_license
         else:
-            pass
+            raise DrivingLicenseReportNotFoundError
 
     @staticmethod
     def remove(id):
@@ -23,7 +24,7 @@ class DriveLicenseService:
         if drive_lice_da.find_by_id(id):
             return drive_lice_da.remove(id)
         else:
-            pass
+            raise DrivingLicenseReportNotFoundError
 
     @staticmethod
     def find_all():
