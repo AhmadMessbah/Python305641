@@ -1,7 +1,6 @@
-from mftplus.controller.exceptions.exeptions import militaryNotFoundError
 from mftplus.model.da.da import DataAccess
 from mftplus.model.entity.military import Military
-from mftplus.controller.exceptions.exeptions import militaryNotFoundError
+from mftplus.controller.exceptions.exeptions import MilitaryNotFoundError
 
 
 
@@ -20,7 +19,7 @@ class MilitaryService:
                 military_da.edit(military)
                 return military
             else:
-                raise militaryNotFoundError()
+                raise MilitaryNotFoundError()
 
         @staticmethod
         def remove(id):
@@ -28,7 +27,7 @@ class MilitaryService:
             if military_da.find_by_id(id):
                 return military_da.remove(id)
             else:
-                raise militaryNotFoundError()
+                raise MilitaryNotFoundError()
 
         @staticmethod
         def find_all():
