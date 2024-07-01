@@ -5,3 +5,6 @@ from datetime import datetime
 status, person1 = PersonController.save("roya", "mirhosseini")
 now = datetime.today()
 print(MedicalReportController.save("stroke", "neorology", now, person1))
+
+
+print(MedicalReportController.findAll())

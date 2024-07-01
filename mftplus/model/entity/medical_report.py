@@ -16,7 +16,7 @@ class MedicalReport(Base):
     _disease = Column("disease", String(20), nullable=False)
     _report_group = Column("report_group", String(20), nullable=False)
     _date_time = Column("date_time", DateTime, nullable=False)
-    doctor_id = Column("doctor_id", Integer, ForeignKey("person_tbl.id"))
+    _doctor_id = Column("doctor_id", Integer, ForeignKey("person_tbl.id"))
     _deleted = Column("deleted", Boolean, default=False)
 
     doctor = relationship("Person")
