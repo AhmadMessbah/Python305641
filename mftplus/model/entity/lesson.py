@@ -13,7 +13,7 @@ class Lesson(Base):
     _department = Column("department", String(20), nullable=False)
     _title = Column("title", String(20), nullable=False)
     _code = Column("code", Integer, nullable=False)
-    _teacher_id = Column("teacher",Integer, ForeignKey("person_tbl.id"))
+    _teacher_id = Column("teacher", Integer, ForeignKey("person_tbl.id"))
     _status = Column("status", Boolean, nullable=False)
     _deleted = Column("deleted", Boolean, default=False)
 
@@ -59,11 +59,11 @@ class Lesson(Base):
     def set_code(self, code):
         self._code = code
 
-    def get_teacher(self):
-        return self._teacher
-
-    def set_teacher(self, teacher):
-        self._teacher = teacher
+    # def get_teacher(self):
+    #     return self._teacher
+    #
+    # def set_teacher(self, teacher):
+    #     self._teacher = teacher
 
     def get_status(self):
         return self._status
@@ -76,7 +76,7 @@ class Lesson(Base):
     department = property(get_department, set_department)
     title = property(get_title, set_title)
     code = property(get_code, set_code)
-    teacher = property(get_teacher, set_teacher)
+    # teacher = property(get_teacher, set_teacher)
     status = property(get_status, set_status)
 
 
