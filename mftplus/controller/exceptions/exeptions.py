@@ -28,7 +28,6 @@ class CarNotFoundError(Exception):
         super().__init__("Car Not Found !!!")
 
 
-
 class MedicalReportNotFoundError(Exception):
     def __init__(self, *args):
         super().__init__("MedicalReport Not Found !!!")
@@ -37,3 +36,8 @@ class MedicalReportNotFoundError(Exception):
 class DrivingLicenseReportNotFoundError(Exception):
     def __init__(self, *args):
         super().__init__("Driving License Not Found !!!")
+
+
+class EmployeementNotFoundError(Exception):
+    def __init__(self, *args):
+        super().__init__("emloyee not Found ")
