@@ -1,39 +1,37 @@
 from mftplus.model.entity.medical_report import MedicalReport
 from mftplus.model.service.medical_report_service import MedicalReportService
+from mftplus.model.tools.decorators import exception_handling
 from mftplus.model.tools.logger import Logger
 
 
 class MedicalReportController:
+    @classmethod
+    @exception_handling
+    def save(cls, disease, report_group, date_time, doctor):
+        medical_report = MedicalReport(disease, report_group, date_time, doctor)
+        print("MED : ", medical_report)
+        MedicalReportService.save(medical_report)
+        Logger.info(f"MedicalReport Saved - {medical_report}")
+        return True, medical_report
+
     @staticmethod
-    def save(disease,report_group,date_time,doctor):
+    def edit(disease, report_group, date_time, doctor):
         try:
-            medical_report = MedicalReport(disease,report_group,date_time,doctor)
-            MedicalReportService.save(medical_report)
-            Logger.info(f"MedicalReport Saved - {medical_report}")
+            medical_report = MedicalReport(disease, report_group, date_time, doctor)
+            medical_report.id = id
+            MedicalReportService.edit(medical_report)
+            Logger.info(f"MedicalReport Edited - {medical_report}")
             return True, medical_report
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
 
     @staticmethod
-    def edit(disease, report_group, date_time,doctor):
-        try:
-            medical_report = MedicalReport(disease, report_group, date_time,doctor)
-            medical_report.id = id
-            MedicalReportService.edit(medical_report)
-            Logger.info(f"MedicalReport Edited - {medical_report}")
-            return True,medical_report
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
-
-
-    @staticmethod
     def remove(id):
         try:
             medical_report = MedicalReportService.remove(id)
             Logger.info(f"MedicalReport Removed - {medical_report}")
-            return True,medical_report
+            return True, medical_report
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
@@ -43,18 +41,17 @@ class MedicalReportController:
         try:
             medical_report_list = MedicalReportService.find_all()
             Logger.info(f"MedicalReport FindAll()")
-            return True,medical_report_list
+            return True, medical_report_list
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
 
-
     @staticmethod
     def find_by_id(id):
         try:
-            medical_report =  MedicalReportService.find_by_id(id)
+            medical_report = MedicalReportService.find_by_id(id)
             Logger.info(f"MedicalReport FindById({id})")
-            return True,medical_report
+            return True, medical_report
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
