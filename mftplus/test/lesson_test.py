@@ -1,9 +1,10 @@
+from mftplus.controller.person_controller import PersonController
 from mftplus.model.da.da import DataAccess
 from mftplus.model.entity.lesson import Lesson
 from mftplus.model.entity.person import Person
+from mftplus.controller.lesson_controller import LessonController
 
-lesson = Lesson("a","english","vocabulary","23","messbah","True","False")
-Person.lesson = lesson
-lesson_da = DataAccess(Lesson)
-lesson_da.save(lesson)
-print(lesson)
+status, teacher = PersonController.save("Ahmad","Messbah")
+
+
+LessonController.save("aaa", "english","vocab","12",teacher)

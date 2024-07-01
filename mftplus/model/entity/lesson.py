@@ -6,7 +6,6 @@ from sqlalchemy.orm import relationship
 from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
 
-# todo : maedeh : validator
 
 class Lesson(Base):
     __tablename__ = "lesson_tbl"
@@ -21,7 +20,7 @@ class Lesson(Base):
 
     teacher = relationship("Person")
 
-    def __init__(self, lesson_group, department, title, code, teacher, status, deleted=False):
+    def __init__(self, lesson_group, department, title, code, teacher, status=True, deleted=False):
         self.id = None
         self.lesson_group = lesson_group
         self.department = department
@@ -68,7 +67,7 @@ class Lesson(Base):
 
     def set_teacher(self, teacher):
         # if name_validator(teacher):
-         self._teacher = teacher
+        self._teacher = teacher
 
     def get_status(self):
         return self._status
@@ -84,11 +83,13 @@ class Lesson(Base):
     teacher = property(get_teacher, set_teacher)
     status = property(get_status, set_status)
 
-def leasson_group_validator(lesson_group , message):
+
+def leasson_group_validator(lesson_group, message):
     if isinstance(lesson_group, str) and re.match("^[A-Za-z]{2-20}$", lesson_group):
         return lesson_group
     else:
         raise ValueError(message)
+
 
 def code_validator(code, message):
     if isinstance(code, int) and re.match("^[0-9]{2-10}$", code):
