@@ -33,3 +33,7 @@ class MedicalReportNotFoundError(Exception):
     def __init__(self, *args):
         super().__init__("MedicalReport Not Found !!!")
 
+
+class DrivingLicenseReportNotFoundError(Exception):
+    def __init__(self, *args):
+        super().__init__("Driving License Not Found !!!")
