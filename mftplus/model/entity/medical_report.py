@@ -54,6 +54,15 @@ class MedicalReport(Base):
     def set_date_time(self, date_time):
         self._date_time = date_time
 
+
+    def get_doctor(self):
+        return self._doctor
+
+
+    def set_doctor(self,doctor):
+        self._doctor = doctor
+
+
     def get_deleted(self):
         return self._deleted
 
