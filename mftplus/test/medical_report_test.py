@@ -4,4 +4,3 @@ from datetime import datetime
 person1 = PersonController.save("roya", "mirhosseini")
 now = datetime.today()
 print(MedicalReportController.save("stroke", "neorology",now, person1))
-

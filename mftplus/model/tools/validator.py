@@ -130,12 +130,12 @@ def code_validator(code, message):
 
 
 #medical_report
-
 def disease_validator(disease, message):
     if isinstance(disease, str) and re.match(r"^[a-zA-Z\s]{3,30}$", disease):
         return disease
     else:
         raise ValueError(message)
+
 
 
 #-----------------------
