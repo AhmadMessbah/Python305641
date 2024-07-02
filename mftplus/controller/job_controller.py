@@ -49,13 +49,22 @@ class JobController:
     @staticmethod
     def find_by_title(title):
         try:
-            job_list = JobService.find_by_title(title)
+            job = JobService.find_by_title(title)
             Logger.info(f"Job FindByTitle({title})")
-            return True,job_list
+            return True,job
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
 
+    @staticmethod
+    def find_by_organisation(organisation):
+        try:
+            job = JobService.find_by_organisation(organisation)
+            Logger.info(f"Job FindByOrganisation({organisation})")
+            return True,job
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"
 
     @staticmethod
     def find_by_date_range(start_date, end_date):

@@ -46,12 +46,12 @@ class JobService:
     @staticmethod
     def find_by_title(title):
         job_da = DataAccess(Job)
-        return job_da.find_by(Job.title == title)
+        return job_da.find_by(Job._title == title)
 
     @staticmethod
     def find_by_organisation(organisation):
         job_da = DataAccess(Job)
-        return job_da.find_by(Job.organisation == organisation)
+        return job_da.find_by(Job._organisation == organisation)
 
     @staticmethod
     def find_by_date_range(start_date, end_date):
