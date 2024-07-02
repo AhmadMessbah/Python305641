@@ -18,7 +18,7 @@ class CarController:
     @staticmethod
     def edit(id, name, model, man_date):
         try:
-            car = Car(name, model, man_date)
+            car = Car(id, name, model, man_date)
             car.id = id
             CarService.edit(car)
             Logger.info(f"Car Edited - {car}")
@@ -26,6 +26,7 @@ class CarController:
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
+
 
     @staticmethod
     def remove(id):
@@ -41,7 +42,7 @@ class CarController:
     def find_all():
         try:
             car_list = CarService.find_all()
-            Logger.info(f"Car FindAll()")
+            Logger.info(f"Car Find All()")
             return True, car_list
         except Exception as e:
             Logger.error(f"{e}")
@@ -51,7 +52,7 @@ class CarController:
     def find_by_id(id):
         try:
             car = CarService.find_by_id(id)
-            Logger.info(f"Car FindById({id})")
+            Logger.info(f"Car Find By Id({id})")
             return True, car
         except Exception as e:
             Logger.error(f"{e}")
@@ -60,8 +61,8 @@ class CarController:
     @staticmethod
     def find_by_name(name):
         try:
-            car = CarService.find_by_name(name)
-            Logger.info(f"Car FindByName({name})")
+            car =  CarService.find_by_name(name)
+            Logger.info(f"Car Find By Name({name})")
             return True, car
         except Exception as e:
             Logger.error(f"{e}")
@@ -80,7 +81,7 @@ class CarController:
     @staticmethod
     def man_date_range(start_date, end_date):
         try:
-            car = CarService.find_by_man_date_range(start_date, end_date)
+            car = CarService.man_date_range(start_date, end_date)
             Logger.info(f"Car Find By Man Date Range({start_date}-{end_date})")
             return True, car
         except Exception as e:

@@ -1,12 +1,7 @@
-from mftplus.controller.skill_controller import SkillController
-from mftplus.controller.person_controller import PersonController
+from mftplus.model.da.da import DataAccess
+from mftplus.model.entity.skill import Skill
 
-status, person1 = PersonController.save("gdfgd", "yytt")
-print(SkillController.save("b", "listening", "most important", "a"))
-
-
-print(SkillController.findAll())
-print(SkillController.find_by_id(1))
-print(SkillController.find_by_group("group"))
-#print(SkillController.find_by_title("title"))
-
+skill = Skill("b", "listening", "most important", "a")
+skill_da = DataAccess(Skill)
+skill_da.save(skill)
+print(skill)

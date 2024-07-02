@@ -5,6 +5,8 @@ from mftplus.model.entity.base import Base
 from datetime import datetime
 import re
 
+from mftplus.model.tools.validator import *
+
 
 class Ticket(Base):
     __tablename__ = "ticket_tbl"
@@ -67,19 +69,19 @@ class Ticket(Base):
         return self._date_time
 
     @date_time.setter
+    @date_time_validator("Invalid Date")
     def date_time(self, date_time):
-        self._date_time = TicketValidator.date_time_validator(date_time, "Invalid Date")
+        self._date_time = date_time
 
     @property
     def status(self):
         return self._status
 
     @status.setter
+    @boolean_validator("Invalid Status")
     def status(self, status):
-        if isinstance(status, bool):
-            self._status = status
-        else:
-            raise ValueError("Invalid Status")
+        self._status = status
+
 
     @property
     def deleted(self):

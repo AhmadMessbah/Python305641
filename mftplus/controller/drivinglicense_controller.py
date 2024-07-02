@@ -1,3 +1,4 @@
+from mftplus.model.entity.driving_licence import DrivingLicense
 from mftplus.model.service.drive_license_service import DriveLicenseService
 from mftplus.model.tools.logger import Logger
 
@@ -31,7 +32,7 @@ class DrivingLicenseController:
         try:
             drive_license = DriveLicenseService.remove(id)
             Logger.info(f"drive license Removed - {drive_license}")
-            return True , drive_license
+            return True, drive_license
 
         except Exception as e:
             Logger.error(f"{e}")
@@ -42,7 +43,7 @@ class DrivingLicenseController:
         try:
             drive_license_list = DriveLicenseService.find_all()
             Logger.info(f"drive license FindAll()")
-            return True , drive_license_list
+            return True, drive_license_list
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
@@ -52,7 +53,7 @@ class DrivingLicenseController:
         try:
             drive_license = DriveLicenseService.find_by_id(id)
             Logger.info(f"Drive license FindById({id})")
-            return True , drive_license
+            return True, drive_license
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
@@ -88,4 +89,3 @@ class DrivingLicenseController:
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
-

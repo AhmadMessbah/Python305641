@@ -1,31 +1,33 @@
-import re
+
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 
 from mftplus.model.entity.base import Base
 from sqlalchemy.orm import relationship
 from mftplus.model.tools.validator import *
+from datetime import datetime
+from mftplus.model.tools.validator import date_time_validator
 
 
 # todo : roya : validator
 
-class MedicalReport:
+class MedicalReport(Base):
     __tablename__ = "medical_report_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
     _disease = Column("disease", String(20), nullable=False)
     _report_group = Column("report_group", String(20), nullable=False)
     _date_time = Column("date_time", DateTime, nullable=False)
+    doctor_id = Column("doctor_id", Integer, ForeignKey("person_tbl.id"))
     _deleted = Column("deleted", Boolean, default=False)
 
-    person_id = Column(Integer, ForeignKey("person_tbl.id"))
-    person = relationship("Person")
+    doctor = relationship("Person")
 
-    def __init__(self, disease, report_group, date_time,person, deleted=False):
+    def __init__(self, disease, report_group, date_time,doctor, deleted=False):
         self.id = None
         self.disease = disease
         self.report_group = report_group
         self.date_time = date_time
+        self.doctor = doctor
         self.deleted = deleted
-        self.person_id = person.id
 
     def get_id(self):
         return self._id
@@ -48,11 +50,9 @@ class MedicalReport:
     def get_date_time(self):
         return self._date_time
 
+    @date_time_validator(message="invalid date time")
     def set_date_time(self, date_time):
-        if isinstance(date_time, datetime):
-            self._date_time = date_time
-        else:
-            raise ValueError("Invalid DateTime")
+        self._date_time = date_time
 
     def get_deleted(self):
         return self._deleted

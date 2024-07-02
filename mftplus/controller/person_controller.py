@@ -1,70 +1,38 @@
 from mftplus.model.entity.person import Person
 from mftplus.model.service.person_service import PersonService
-from mftplus.model.tools.logger import Logger
+from mftplus.model.tools.decorators import exception_handling
 
 
 class PersonController:
-    @staticmethod
-    def save(name, family):
-        try:
-            person = Person("ahmad", "messbah")
-            PersonService.save(person)
-            Logger.info(f"Person Saved - {person}")
-            return True, person
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def save(cls, name, family):
+        person = Person(name, family)
+        return True, PersonService.save(person)
 
-    @staticmethod
-    def edit(id, name, family):
-        try:
-            person = Person("ahmad", "messbah")
-            person.id = id
-            PersonService.edit(person)
-            Logger.info(f"Person Edited - {person}")
-            return True,person
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def edit(cls, id, name, family):
+        person = Person(name, family)
+        person.id = id
+        return True, PersonService.edit(person)
 
+    @classmethod
+    @exception_handling
+    def remove(cls, id):
+        return True, PersonService.remove(id)
 
-    @staticmethod
-    def remove(id):
-        try:
-            person = PersonService.remove(id)
-            Logger.info(f"Person Removed - {person}")
-            return True,person
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def find_all(cls, ):
+        return True, PersonService.find_all()
 
-    @staticmethod
-    def findAll():
-        try:
-            person_list = PersonService.find_all()
-            Logger.info(f"Person FindAll()")
-            return True,person_list
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def find_by_id(cls, id):
+        return True, PersonService.find_by_id(id)
 
-
-    @staticmethod
-    def find_by_id(id):
-        try:
-            person =  PersonService.find_by_id(id)
-            Logger.info(f"Person FindById({id})")
-            return True,person
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
-
-    @staticmethod
-    def find_by_family(family):
-        try:
-            person_list = PersonService.find_by_family(family)
-            Logger.info(f"Person FindByFamily({family})")
-            return True, person_list
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def find_by_family(cls, family):
+        return True, PersonService.find_by_family(family)

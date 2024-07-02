@@ -1,4 +1,4 @@
-from mftplus.controller.exceptions.exeptions import emloyeeNotFoundError
+from mftplus.controller.exceptions.exeptions import EmployeementNotFoundError
 from mftplus.model.da.da import DataAccess
 from mftplus.model.entity.employeement import Employeement
 
@@ -16,7 +16,7 @@ class EmployeeService:
             employee_da.edit(employee)
             return employee
         else:
-            raise emloyeeNotFoundError()
+            raise EmployeementNotFoundError()
 
     @staticmethod
     def remove(id):
@@ -24,7 +24,7 @@ class EmployeeService:
         if employee_da.find_by_id(id):
             return employee_da.remove(id)
         else:
-            raise emloyeeNotFoundError()
+            raise EmployeementNotFoundError()
 
     @staticmethod
     def find_all():
