@@ -12,4 +12,3 @@ from mftplus.model.entity.person import Person
 # JobController.remove(7)
 # print(JobController.find_by_date_range("2000/10/9", "2001/9/9"))
 print(JobController.find_by_title("programming"))
-
