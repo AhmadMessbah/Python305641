@@ -197,4 +197,12 @@ def disease_validator(disease, message):
     else:
         raise ValueError(message)
 
+
+#def date_time_validator(date_time_value,message):
+#    if isinstance(date_time_value,datetime):
+#        return date_time_value
+#    else:
+#        raise ValueError(message)
+
+
 # -----------------------

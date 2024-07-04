@@ -13,8 +13,8 @@ from mftplus.model.tools.validator import date_time_validator
 class MedicalReport(Base):
     __tablename__ = "medical_report_tbl"
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
-    _disease = Column("disease", String(20), nullable=False)
-    _report_group = Column("report_group", String(20), nullable=False)
+    _disease = Column("disease", String(30), nullable=False)
+    _report_group = Column("report_group", String(30), nullable=False)
     _date_time = Column("date_time", DateTime, nullable=False)
     _doctor_id = Column("doctor_id", Integer, ForeignKey("person_tbl.id"))
     _deleted = Column("deleted", Boolean, default=False)
@@ -25,7 +25,7 @@ class MedicalReport(Base):
         self.id = None
         self.disease = disease
         self.report_group = report_group
-        self.date_time = date_time
+        self.date_time = datetime.now()
         self.doctor = doctor
         self.deleted = deleted
 
@@ -50,9 +50,9 @@ class MedicalReport(Base):
     def get_date_time(self):
         return self._date_time
 
-    @date_time_validator(message="invalid date time")
+    #@date_time_validator(message="invalid date time")
     def set_date_time(self, date_time):
-        self._date_time = date_time
+        self._date_time = date_time_validator(date_time,"invalid date_time")
 
 
     def get_doctor(self):
