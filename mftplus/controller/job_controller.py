@@ -57,21 +57,21 @@ class JobController:
             return False, f"{e}"
 
     @staticmethod
-    def find_by_date_range(date_range):
+    def find_by_organisation(organisation):
         try:
-            job_list = JobService.find_by_date_range(date_range)
-            Logger.info(f"Job FindByDateRange({date_range})")
-            return True,job_list
+            job_list = JobService.find_by_organisation(organisation)
+            Logger.info(f"Job FindByOrganisation({organisation})")
+            return True, job_list
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
 
     @staticmethod
-    def find_by_date_range(start_date, end_date):
+    def date_range(start_date, end_date):
         try:
-            job = JobService.find_by_date_range(start_date, end_date)
-            Logger.info(f"Ticket FindByTextContent({start_date}-{end_date})")
-            return True, job
+            job_list = JobService.date_range(start_date, end_date)
+            Logger.info(f"Job FindByTextContent({start_date}-{end_date})")
+            return True, job_list
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"

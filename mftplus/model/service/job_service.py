@@ -36,9 +36,6 @@ class JobService:
         job_da = DataAccess(Job)
         return job_da.find_by_id(id)
 
-
-    # todo : find by title, organisation , date_range
-
     @staticmethod
     def find_by_title(title):
         job_da = DataAccess(Job)
@@ -50,6 +47,6 @@ class JobService:
         return job_da.find_by(Job._organisation == organisation)
 
     @staticmethod
-    def find_by_date_range(date_range):
+    def date_range(start_date, end_date):
         job_da = DataAccess(Job)
-        return job_da.find_by(job_da.start_date <= date_range <= job_da.end_date)
+        return job_da.find_by_date_range(start_date, end_date)
