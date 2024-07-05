@@ -16,7 +16,7 @@ class MedicalReport(Base):
     _disease = Column("disease", String(20), nullable=False)
     _report_group = Column("report_group", String(20), nullable=False)
     _date_time = Column("date_time", DateTime, nullable=False)
-    doctor_id = Column("doctor_id", Integer, ForeignKey("person_tbl.id"))
+    _doctor_id = Column("doctor_id", Integer, ForeignKey("person_tbl.id"))
     _deleted = Column("deleted", Boolean, default=False)
 
     doctor = relationship("Person")
@@ -53,6 +53,15 @@ class MedicalReport(Base):
     @date_time_validator(message="invalid date time")
     def set_date_time(self, date_time):
         self._date_time = date_time
+
+
+    def get_doctor(self):
+        return self._doctor
+
+
+    def set_doctor(self,doctor):
+        self._doctor = doctor
+
 
     def get_deleted(self):
         return self._deleted
