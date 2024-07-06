@@ -13,7 +13,7 @@ class LessonController:
 
     @staticmethod
     @exception_handling
-    def edit(id, lesson_group, department, title, code, teacher, status):
+    def edit(cls,id,lesson_group, department, title, code, teacher, status):
         lesson = Lesson(lesson_group, department, title, code, teacher, status)
         lesson.id = id
         LessonService.edit(lesson)
@@ -21,7 +21,7 @@ class LessonController:
 
 
     @staticmethod
-    def remove(id):
+    def remove(cls,id):
         lesson = LessonService.remove(id)
         Logger.info(f"lesson Removed - {lesson}")
         return True, lesson
@@ -29,13 +29,13 @@ class LessonController:
 
     @staticmethod
     @exception_handling
-    def find_all():
+    def find_all(cls,):
         lesson_list = LessonService.find_all()
         Logger.info(f"Lesson FindAll()")
         return True, lesson_list
     @staticmethod
     @exception_handling
-    def find_by_id(id):
+    def find_by_id(cls,id):
         lesson = LessonService.find_by_id(id)
         Logger.info(f"Lesson Find By Id({id})")
         return True, lesson
@@ -43,7 +43,7 @@ class LessonController:
 
     @staticmethod
     @exception_handling
-    def find_by_teacher(teacher):
+    def find_by_teacher(cls,teacher):
         lesson = LessonService.find_by_teacher(teacher)
         Logger.info(f"Lesson Find By Teacher({teacher})")
         return True, lesson
@@ -51,20 +51,20 @@ class LessonController:
 
     @staticmethod
     @exception_handling
-    def find_by_lesson_group(lesson_group):
+    def find_by_lesson_group(cls,lesson_group):
         lesson = LessonService.find_by_lesson_group(lesson_group)
         Logger.info(f"Lesson Find By Lesson Group({lesson_group})")
         return True, lesson
 
     @staticmethod
     @exception_handling
-    def find_by_code(code):
+    def find_by_code(cls,code):
         lesson = LessonService.find_by_code(code)
         return True, lesson
 
     @staticmethod
     @exception_handling
-    def find_by_title(title):
+    def find_by_title(cls,title):
             lesson = LessonService.find_by_title(title)
             Logger.info(f"Lesson Find By Title({title})")
             return True, lesson
@@ -72,7 +72,7 @@ class LessonController:
 
     @staticmethod
     @exception_handling
-    def find_by_department(department):
+    def find_by_department(cls,department):
         lesson = LessonService.find_by_department(department)
         Logger.info(f"Lesson Find By Department({department})")
         return True, lesson
