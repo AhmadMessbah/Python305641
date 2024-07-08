@@ -41,3 +41,7 @@ class DrivingLicenseReportNotFoundError(Exception):
 class EmployeementNotFoundError(Exception):
     def __init__(self, *args):
         super().__init__("emloyee not Found ")
+
+class SkillNotFoundError(Exception):
+    def __init__(self, *args):
+        super().__init__("Skill Not Found !!!")
