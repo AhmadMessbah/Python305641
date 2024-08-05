@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
-# salam
-
 from mftplus.model.entity.base import Base
 from mftplus.model.tools.validator import *
 class BankAccount:
